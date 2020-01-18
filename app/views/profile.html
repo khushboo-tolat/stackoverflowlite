@@ -1,0 +1,66 @@
+<div>
+     <div class="mdc-card profile-up" ng-controller="profileCtrl" ng-init="item = 0">
+          <div ng-show="item == 0">
+               <i class="material-icons md-24 flag" ng click="">flag</i>
+               <a href="" style="color: black"><i class="material-icons md-24 edit" ng-click="item = 1">edit</i></a>    
+          </div>
+          <div ng-show="item == 1">
+               <button class="cancel-btn" ng-click="item = 0">Cancel</button>
+               <button class="update-btn" ng-click="updateUser()">Update</button>
+          </div>
+          <table>
+               <tr>
+                    <td><img src="http://localhost/stackoverflowlite/app/assets/images/default.png" class="profile-img"></td>
+                    <td class="profile-content" ng-show="item == 0">
+                         <div class="full-name">{{ user.fullName }}</div>
+                         <div><span class="span">Username:</span> {{ user.userName }}</div>
+                         <div><span class="span">EmailID:</span> {{ user.email }}</div>
+                         <div><span class="span">Company:</span> <span ng-if="user.company">{{ user.company }}</span> <span ng-if="!user.company"> Add your company name </span></div>
+                         <div><span class="span">Designation:</span> <span ng-if="user.designation">{{ user.designation }}</span> <span ng-if="!user.designation"> Add your designation </span></div>
+                    </td>
+                    <td class="profile-content" ng-show="item == 1">
+                         <div><input name="fullName" ng-model="user.fullName" required></div><br>
+                         <div><span class="span">Username:</span> <input value="{{ user.userName }}" name="userName" ng-model="user.userName" required></div><br>
+                         <div><span class="span">EmailID:</span> {{ user.email }}</div><br>
+                         <div><span class="span">Company:</span> <input value="{{ user.company }}" name="company" ng-model="user.company"></div><br>
+                         <div><span class="span">Designation:</span> <input value="{{ user.designation }}" name="designation" ng-model="user.designation"> </div><br>
+                    </td>
+               </tr>
+          </table>
+     </div>
+
+     <div class="profile-down">
+          <div class="tabs">
+               <input name="tabs" type="radio" id="tab-1" checked="checked" class="input"/>
+               <label for="tab-1" class="label">Questions</label>
+               <div class="panel">
+                    <h2>Questions</h2>
+                    <p>The orange (specifically, the sweet orange) is the fruit of the citrus species Citrus × sinensis in the family Rutaceae</p>
+                    <p>The fruit of the Citrus × sinensis is considered a sweet orange, whereas the fruit of the Citrus × aurantium is considered a bitter orange. The sweet orange reproduces asexually (apomixis through nucellar embryony); varieties of sweet ajsdttvgnb mvghfmhvbvbc vcmgcmbcvbcvvb  vnbvnbvorange arise through gyghfgfkfgfg fghfggfhkhkj fgdgfdgfghfjfgh fjgjhgjhgjh fjjhfjh mutations.</p>
+                    <p>The fruit of the Citrus × sinensis is considered a sweet orange, whereas the fruit of the Citrus × aurantium is considered a bitter orange. The sweet orange reproduces asexually (apomixis through nucellar embryony); varieties of sweet ajsdttvgnb mvghfmhvbvbc vcmgcmbcvbcvvb  vnbvnbvorange arise through gyghfgfkfgfg fghfggfhkhkj fgdgfdgfghfjfgh fjgjhgjhgjh fjjhfjh mutations.</p>
+               </div>
+
+               <input name="tabs" type="radio" id="tab-2" class="input"/>
+               <label for="tab-2" class="label">Answers</label>
+               <div class="panel">
+                    <h2>Answers</h2>
+                    <p>The tangerine (Citrus tangerina) is an orange-colored citrus fruit that is closely related to, or possibly a type of, mandarin orange (Citrus reticulata).</p>
+                    <p>The name was first used for fruit coming from Tangier, Morocco, described as a mandarin variety. Under the Tanaka classification system, Citrus tangerina is considered a separate species.</p>
+               </div>
+
+               <input name="tabs" type="radio" id="tab-3" class="input"/>
+               <label for="tab-3" class="label">Votes</label>
+               <div class="panel">
+                    <h2>Votes</h2>
+                    <p>A clementine (Citrus ×clementina) is a hybrid between a mandarin orange and a sweet orange, so named in 1902. The exterior is a deep orange colour with a smooth, glossy appearance. Clementines can be separated into 7 to 14 segments. Similarly to tangerines, they tend to be easy to peel.</p>
+               </div>
+
+               <input name="tabs" type="radio" id="tab-4" class="input"/>
+               <label for="tab-4" class="label">Comments</label>
+               <div class="panel">
+                    <h2>Comments</h2>
+                    <p>A clementine (Citrus ×clementina) is a hybrid between a mandarin orange and a sweet orange, so named in 1902. The exterior is a deep orange colour with a smooth, glossy appearance. Clementines can be separated into 7 to 14 segments. Similarly to tangerines, they tend to be easy to peel.</p>
+               </div>
+          </div>
+     </div>
+</div>
