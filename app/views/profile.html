@@ -1,12 +1,12 @@
-<div>
-     <div class="mdc-card profile-up" ng-controller="profileCtrl" ng-init="item = 0">
+<div ng-controller="profileCtrl">
+     <div class="mdc-card profile-up" ng-init="item = 0">
           <div ng-show="item == 0">
                <i class="material-icons md-24 flag" ng click="">flag</i>
                <a href="" style="color: black"><i class="material-icons md-24 edit" ng-click="item = 1">edit</i></a>    
           </div>
-          <div ng-show="item == 1">
-               <button class="cancel-btn" ng-click="item = 0">Cancel</button>
-               <button class="update-btn" ng-click="updateUser()">Update</button>
+          <div ng-show="item == 1" ng-click="item = 0">
+               <button class="cancel-btn">Cancel</button>
+               <button class="update-btn" ng-click="updateUser()" ng-disabled="formValidate.$invalid" id="update">Update</button>
           </div>
           <table>
                <tr>
@@ -19,25 +19,76 @@
                          <div><span class="span">Designation:</span> <span ng-if="user.designation">{{ user.designation }}</span> <span ng-if="!user.designation"> Add your designation </span></div>
                     </td>
                     <td class="profile-content" ng-show="item == 1">
-                         <div><input name="fullName" ng-model="user.fullName" required></div><br>
-                         <div><span class="span">Username:</span> <input value="{{ user.userName }}" name="userName" ng-model="user.userName" required></div><br>
-                         <div><span class="span">EmailID:</span> {{ user.email }}</div><br>
-                         <div><span class="span">Company:</span> <input value="{{ user.company }}" name="company" ng-model="user.company"></div><br>
-                         <div><span class="span">Designation:</span> <input value="{{ user.designation }}" name="designation" ng-model="user.designation"> </div><br>
+                         <form name="formValidate">
+                              <input type="text" name="fullName" ng-model="user.fullName" ng-minlength="5" required><br>
+                              <p ng-show="formValidate.fullName.$error.required" style="color: red;"> Name is required. </p>
+                              <p ng-show="formValidate.fullName.$error.minlength" style="color: red;"> Name is too short. </p><br>
+
+                              <span class="span">Username:</span> <input type="text" value="{{ user.userName }}" name="userName" ng-model="user.userName" required ng-minlength="5" ng-blur="checkUsername()"><br>
+                              <p ng-show="formValidate.userName.$error.required" style="color: red;"> Name is required. </p>
+                              <p ng-show="formValidate.userName.$error.minlength" style="color: red;"> Name is too short. </p>
+                              <p ng-show="isvalid" style="color: red;"> Name is already in use. </p><br>
+
+                              <span class="span">EmailID:</span> {{ user.email }}<br><br>
+
+                              <span class="span">Company:</span> <input type="text" value="{{ user.company }}" name="company" ng-model="user.company" ng-minlength="5"><br>
+                              <p ng-show="formValidate.company.$error.minlength" style="color: red;"> Name is too short. </p><br>
+
+                              <span class="span">Designation:</span> <input type="text" value="{{ user.designation }}" name="designation" ng-model="user.designation" ng-minlength="5"> <br>
+                              <p ng-show="formValidate.designation.$error.minlength" style="color: red;"> Name is too short. </p><br>
+                         </form>
                     </td>
                </tr>
           </table>
      </div>
 
      <div class="profile-down">
+          <div>
+               <h2>Question: </h2> 
+               <div ng-repeat="q in ques">
+                    Title: {{ q.title }}
+                    views: {{ q.views }}
+                    
+               </div>
+          </div>
+          <div>
+               Votes:
+          </div>
+          <div>
+               Answers:
+          </div>
+          <div>
+               Views:
+          </div>
+          <div>
+               Tags:
+          </div>
+          <div>
+               Time:
+          </div>
+     </div>
+
+
+     <!-- <div class="profile-down">
           <div class="tabs">
                <input name="tabs" type="radio" id="tab-1" checked="checked" class="input"/>
                <label for="tab-1" class="label">Questions</label>
                <div class="panel">
-                    <h2>Questions</h2>
-                    <p>The orange (specifically, the sweet orange) is the fruit of the citrus species Citrus × sinensis in the family Rutaceae</p>
-                    <p>The fruit of the Citrus × sinensis is considered a sweet orange, whereas the fruit of the Citrus × aurantium is considered a bitter orange. The sweet orange reproduces asexually (apomixis through nucellar embryony); varieties of sweet ajsdttvgnb mvghfmhvbvbc vcmgcmbcvbcvvb  vnbvnbvorange arise through gyghfgfkfgfg fghfggfhkhkj fgdgfdgfghfjfgh fjgjhgjhgjh fjjhfjh mutations.</p>
-                    <p>The fruit of the Citrus × sinensis is considered a sweet orange, whereas the fruit of the Citrus × aurantium is considered a bitter orange. The sweet orange reproduces asexually (apomixis through nucellar embryony); varieties of sweet ajsdttvgnb mvghfmhvbvbc vcmgcmbcvbcvvb  vnbvnbvorange arise through gyghfgfkfgfg fghfggfhkhkj fgdgfdgfghfjfgh fjgjhgjhgjh fjjhfjh mutations.</p>
+                    <h1>Question</h1>
+                    <p>
+                         <table>
+                              <tr>
+                                   <td>Votes</td>
+                                   <td>Answers</td>
+                                   <td>Views</td>
+                                   <td>Title</td>
+                                   <td>TIme</td>
+                              </tr>
+                              <tr>
+
+                              </tr>
+                         </table> 
+                    </p>  
                </div>
 
                <input name="tabs" type="radio" id="tab-2" class="input"/>
@@ -62,5 +113,5 @@
                     <p>A clementine (Citrus ×clementina) is a hybrid between a mandarin orange and a sweet orange, so named in 1902. The exterior is a deep orange colour with a smooth, glossy appearance. Clementines can be separated into 7 to 14 segments. Similarly to tangerines, they tend to be easy to peel.</p>
                </div>
           </div>
-     </div>
-</div>
+     </div> -->
+</div ng-controller="profileCtrl">

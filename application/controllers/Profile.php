@@ -23,5 +23,27 @@
                ];
                $this->Profile_m->update_user_details($user);
           }
+
+          function get_ques() {
+               $ques = $this->Profile_m->get_ques_details();
+               // echo "<pre>";
+               // print_r($ques);
+               echo json_encode($ques);
+          }
+
+          function get_ans() {
+               $ans = $this->Profile_m->get_ans_details();
+               echo json_encode($ans);
+          }
+
+          function get_vote() {
+               $vote = $this->Profile_m->get_vote_details();
+               echo json_encode($vote);     
+          }
+
+          function get_comment() {
+               $comment = $this->Profile_m->get_comment_details();
+               echo json_encode($comment);     
+          }
      }
 ?>
