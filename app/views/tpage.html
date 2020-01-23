@@ -1,0 +1,22 @@
+<!-- <!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <link rel="stylesheet" href="http://localhost/stackoverflowlite/app/assets/css/tpage.css">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.js"></script>
+  </head>
+  <body ng-app="tagApp" ng-controller="tagCtrl" style="padding:10px;"> -->
+  <link rel="stylesheet" href="http://localhost/stackoverflowlite/app/assets/css/tpage.css">
+  <div style="align:center;position:sticky;" ng-repeat='c in content'>
+  <div class="mdl-card mdl-shadow--4dp">
+  <div class="mdl-card__title">{{ c.tagName }}</div>
+  <div class="mdl-card__supporting-text">Some description of the tag....</div>
+  <div class="mdl-card__actions"> <a class="link1" ui-sref="tag({ tname: c.tagName })">View related posts...</a> </div>
+</div>
+</div>
+<!-- <script src="http://localhost/CodeIgniter/js/tpage.js"></script>
+  </body>
+</html> -->
