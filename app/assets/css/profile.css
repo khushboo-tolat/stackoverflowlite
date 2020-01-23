@@ -77,68 +77,60 @@ input {
 }
 
 /* Tabs */
-.tabs {
-  display: flex;
-  flex-wrap: wrap;
-  max-width: 100%;
-  background: #efefef;
-  box-shadow: 0 48px 80px -32px rgba(0,0,0,0.3);
-  font-family: Verdana;
-}
-.input {
-  position: absolute;
-  opacity: 0;
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
 }
 
-.label {
-  width: 100%;
-  padding: 20px 30px;
-  background: #e5e5e5;
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
   cursor: pointer;
-  font-weight: bold;
-  font-size: 15px;
-  color: #7f7f7f;
-  transition: background 0.1s, color 0.1s;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
 }
 
-.label:hover {
-  background: #d8d8d8;
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
 }
 
-.label:active {
-  background: #ccc;
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
 }
 
-.input:focus + .label {
-  box-shadow: inset 0px 0px 0px 3px #2aa1c0;
-  z-index: 1;
-}
-
-.input:checked + .label {
-  background: #fff;
-  color: #000;
-}
-
-.panel {
+/* Style the tab content */
+.tabcontent {
   display: none;
-  padding: 20px 30px 30px;
-  background: #fff;
-  min-height: 500px;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
 }
 
-@media (min-width: 600px) {
-  .panel {
-    order: 99;
-  }
-  .label {
-      width: auto;
-  }
+.display-section {
+  margin: 20px;
+  padding: 10px 10px 0px 10px;
+  border-top: 1px solid #B5B5B5;
 }
 
-.input:checked + .label + .panel {
-  display: block;
+.table-row {
+  padding-left: 10px;
 }
 
-.display-div {
-  border-bottom: 1px solid #7f7f7f;
+.subtitle {
+  color: gray;
+  font-size: 13px;
+}
+
+.tag-btn {
+  padding: 3px;
+  font-size: 13px;
+  border-radius: 4px;
 }

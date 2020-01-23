@@ -1,12 +1,16 @@
-<div ng-controller="profileCtrl">
+<div ng-controller="profileCtrl as main">
      <div class="mdc-card profile-up" ng-init="item = 0">
           <div ng-show="item == 0">
-               <i class="material-icons md-24 flag" ng click="">flag</i>
-               <a href="" style="color: black"><i class="material-icons md-24 edit" ng-click="item = 1">edit</i></a>    
+               <span ng-if="!validUser">
+                    <a href="" ng-style="reportObj"><i class="material-icons md-24 flag" ng-click="reportUser($eval(user.userId), 2)">flag</i></a>
+               </span>
+               <span ng-if="validUser">
+                    <a href="" style="color: black"><i class="material-icons md-24 edit" ng-click="item = 1">edit</i></a>    
+               </span>
           </div>
           <div ng-show="item == 1" ng-click="item = 0">
                <button class="cancel-btn">Cancel</button>
-               <button class="update-btn" ng-click="updateUser()" ng-disabled="formValidate.$invalid" id="update">Update</button>
+               <button class="update-btn" ng-click="updateUser()" ng-disabled="formValidate.$invalid || isvalid" id="update">Update</button>
           </div>
           <table>
                <tr>
@@ -24,7 +28,7 @@
                               <p ng-show="formValidate.fullName.$error.required" style="color: red;"> Name is required. </p>
                               <p ng-show="formValidate.fullName.$error.minlength" style="color: red;"> Name is too short. </p><br>
 
-                              <span class="span">Username:</span> <input type="text" value="{{ user.userName }}" name="userName" ng-model="user.userName" required ng-minlength="5" ng-blur="checkUsername()"><br>
+                              <span class="span">Username:</span> <input type="text" value="{{ user.userName }}" name="userName" id="userName" ng-model="user.userName" required ng-minlength="5" ng-blur="checkUsername()"><br>
                               <p ng-show="formValidate.userName.$error.required" style="color: red;"> Name is required. </p>
                               <p ng-show="formValidate.userName.$error.minlength" style="color: red;"> Name is too short. </p>
                               <p ng-show="isvalid" style="color: red;"> Name is already in use. </p><br>
@@ -43,75 +47,94 @@
      </div>
 
      <div class="profile-down">
-          <div>
-               <h2>Question: </h2> 
-               <div ng-repeat="q in ques">
-                    Title: {{ q.title }}
-                    views: {{ q.views }}
-                    
+          <!-- Tab links -->
+          <div class="tab">
+               <button class="tablinks active" onclick="openTab(event, 'Ques')" id="defaultOpen">Questions</button>
+               <button class="tablinks" onclick="openTab(event, 'Ans')">Answers</button>
+               <button class="tablinks" onclick="openTab(event, 'Comment')">Comments</button>
+             </div>
+             
+             <div id="Ques" class="tabcontent" style="display: block;">
+               <h3>Questions</h3>
+               <div ng-if="!ques_length">
+                    You have not asked any question yet!!
                </div>
-          </div>
-          <div>
-               Votes:
-          </div>
-          <div>
-               Answers:
-          </div>
-          <div>
-               Views:
-          </div>
-          <div>
-               Tags:
-          </div>
-          <div>
-               Time:
-          </div>
+               <div ng-repeat="q in ques" class="display-section">
+                    <table width="100%">
+                         <tr>
+                              <td class="table-row" rowspan="2" style="text-align: center;">
+                                  {{ q.vote_cnt }}
+                                  <p class="subtitle">Votes</p> 
+                              </td>
+                              <td class="table-row" rowspan="2" style="text-align: center;">
+                                   {{ q.ans_cnt }}
+                                   <p class="subtitle">Answers</p> 
+                              </td>
+                              <td class="table-row" rowspan="2" style="text-align: center;">
+                                   {{ q.views }}
+                                   <p class="subtitle">Views</p> 
+                              </td>
+                              <td class="table-row" width="60%"><a href="#" style="text-decoration: none;">{{ q.title }}</a></td>
+                              <td rowspan="2">
+                                   {{ q.updatedTime | timeago }}
+                              </td>
+                         </tr>
+                         <tr>
+                              <td class="table-row">
+                                    <span ng-repeat="t in q.tags"> <button class="tag-btn" ng-click="">{{t.tagName}} </button></span>
+                              </td>
+                         </tr>
+                    </table> 
+               </div>
+             </div>
+             
+             <div id="Ans" class="tabcontent">
+               <h3>Answers</h3>
+               <div ng-if="!ans_length">
+                    You have not answered any question yet!!
+               </div>
+               <div ng-repeat="a in ans" class="display-section">
+                    <table width="100%">
+                         <tr>
+                              <td  rowspan="2" class="table-row" style="text-align: center;">
+                                  {{ a.vote_cnt }}
+                                  <p class="subtitle">Votes</p> 
+                              </td>
+                              <td class="table-row" width="70%">{{ a.answer }}</td>
+                              <td rowspan="2">
+                                   {{ a.updatedTime | timeago }}
+                              </td>
+                         </tr>
+                         <tr>
+                              <td class="table-row"><a href="#" style="text-decoration: none;">{{ a.ques }}</a></td>
+                         </tr>
+                    </table> 
+               </div>
+             </div>
+             
+             <div id="Comment" class="tabcontent">
+               <h3>Comments</h3>
+               <div ng-if="!comment_length">
+                    You have not commented on any question OR answer yet!!
+               </div>
+               <div ng-repeat="c in comment" class="display-section">
+                    <table width="100%">
+                         <tr>
+                              <td  rowspan="2" class="table-row subtitle" style="text-align: center;"width="10%">
+                                   {{ c.type }}
+                              </td>
+                              <td class="table-row" width="75%">{{ c.description }}</td>
+                              <td rowspan="2">
+                                   {{ c.updatedTime | timeago }}
+                              </td>
+                         </tr>
+                         <tr>
+                              <td class="table-row"><a href="#" style="text-decoration: none;">{{ c.title }}</a></td>
+                         </tr>
+                    </table> 
+               </div>
+             </div>
      </div>
+</div>
 
 
-     <!-- <div class="profile-down">
-          <div class="tabs">
-               <input name="tabs" type="radio" id="tab-1" checked="checked" class="input"/>
-               <label for="tab-1" class="label">Questions</label>
-               <div class="panel">
-                    <h1>Question</h1>
-                    <p>
-                         <table>
-                              <tr>
-                                   <td>Votes</td>
-                                   <td>Answers</td>
-                                   <td>Views</td>
-                                   <td>Title</td>
-                                   <td>TIme</td>
-                              </tr>
-                              <tr>
-
-                              </tr>
-                         </table> 
-                    </p>  
-               </div>
-
-               <input name="tabs" type="radio" id="tab-2" class="input"/>
-               <label for="tab-2" class="label">Answers</label>
-               <div class="panel">
-                    <h2>Answers</h2>
-                    <p>The tangerine (Citrus tangerina) is an orange-colored citrus fruit that is closely related to, or possibly a type of, mandarin orange (Citrus reticulata).</p>
-                    <p>The name was first used for fruit coming from Tangier, Morocco, described as a mandarin variety. Under the Tanaka classification system, Citrus tangerina is considered a separate species.</p>
-               </div>
-
-               <input name="tabs" type="radio" id="tab-3" class="input"/>
-               <label for="tab-3" class="label">Votes</label>
-               <div class="panel">
-                    <h2>Votes</h2>
-                    <p>A clementine (Citrus ×clementina) is a hybrid between a mandarin orange and a sweet orange, so named in 1902. The exterior is a deep orange colour with a smooth, glossy appearance. Clementines can be separated into 7 to 14 segments. Similarly to tangerines, they tend to be easy to peel.</p>
-               </div>
-
-               <input name="tabs" type="radio" id="tab-4" class="input"/>
-               <label for="tab-4" class="label">Comments</label>
-               <div class="panel">
-                    <h2>Comments</h2>
-                    <p>A clementine (Citrus ×clementina) is a hybrid between a mandarin orange and a sweet orange, so named in 1902. The exterior is a deep orange colour with a smooth, glossy appearance. Clementines can be separated into 7 to 14 segments. Similarly to tangerines, they tend to be easy to peel.</p>
-               </div>
-          </div>
-     </div> -->
-</div ng-controller="profileCtrl">
