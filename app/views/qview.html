@@ -1,0 +1,21 @@
+<div ng-controller="quesCtrl">
+      <div ng-repeat="c in content" class="divrepeat" >
+
+      <div class="div1">Votes:{{c.v}}</div>
+      <div class="div2">Views:{{ c.views }}</div>
+      <div class="div3" style="position:sticky;">
+        <div class="mdl-card" style="width:100%;">
+        <div class="mdl-card__title">
+          <a class="link1" ng-click="incviews(c.qId)" ui-sref="quesdetail({ qid: c.qId })">{{ c.title }}</a>
+        </div>
+        <div class="mdl-card__media">
+        </div>
+        <div class="mdl-card__supporting-text">
+        <span ng-repeat="t in c.Tagname.split(',')" ><a class="link2" ui-sref="tag({ tname: t })" >{{ t }} </a>&emsp;</span>
+        <div class="time">{{c.updatedTime}}<br>{{c.fullName}}</div>
+        </div>
+      </div>
+    </div>
+    <div style='clear:both;'></div>
+    </div>
+</div>
