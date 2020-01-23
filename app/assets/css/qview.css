@@ -1,0 +1,64 @@
+.wide-card.mdl-card {
+      width:60%;
+      margin:10px;
+   }
+.event-card.mdl-card {
+      width: 256px;
+      height: 256px;
+      background: #3E4EB8;
+   }
+
+   .event-card.mdl-card__title {
+      color: #fff;
+      height: 176px;
+   }
+
+   .event-card > .mdl-card__actions {
+      border-color: rgba(255, 255, 255, 0.2);
+      display: flex;
+      box-sizing:border-box;
+      align-items: center;
+      color: #fff;
+   }
+   .divrepeat{
+     height:auto;
+     width:60%;
+     margin:10px;
+     border: 1px solid rgba(0, 0, 0, 0.5);
+     position:relative;
+   }
+   .div1{
+     height:inherit;
+     width:20%;
+     float:left;
+     display:inline-block;
+     transform: translateY(25%);
+     position: absolute;
+     padding:5px;
+   }
+   .div2{
+     bottom:50%;
+     left:5px;
+     position:absolute;
+   }
+   .div3{
+     width:80%;
+     float:right;
+     position:sticky;
+     display:inline-block;
+   }
+   .link1{
+     text-decoration: none;
+     color:black;
+   }
+   .link2{
+     text-decoration: none;
+      background-color: cyan;
+     color:black
+   }
+   .time{
+     float:right;
+     bottom:10px;
+     right:10px;
+     position:absolute;
+   }
