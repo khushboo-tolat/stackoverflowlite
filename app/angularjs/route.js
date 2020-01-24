@@ -1,7 +1,15 @@
 var routeApp = angular.module("routeApp", ['ui.router']);
 
+/*routeApp.run(function($rootScope){
+     $rootScope.islogin = false;
+    $rootScope.success =false;
+
+})*/
+
+
+
 routeApp.config(function($stateProvider, $urlRouterProvider) {
-     $urlRouterProvider.otherwise("/Profile");
+     $urlRouterProvider.otherwise("/AskQuestion");
 
      $stateProvider
      .state("QuesList", {
@@ -23,5 +31,6 @@ routeApp.config(function($stateProvider, $urlRouterProvider) {
           url: "/Profile",
           templateUrl: "http://localhost/stackoverflowlite/app/views/profile.html",
           controller: "profileCtrl"
+         
      })
 });

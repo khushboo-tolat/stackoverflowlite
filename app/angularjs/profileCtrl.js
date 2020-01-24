@@ -1,5 +1,18 @@
 var profile = angular.module('routeApp');
 
+profile.controller('headerCtrl',function($scope,$http){
+     $scope.islogIn = true;
+     /* $http({
+
+          url:'http://localhost/stackoverflowlite/index.php/Timeline/get_session'
+      }).then({
+          
+      });*/
+      
+    
+
+});
+
 profile.controller('profileCtrl', ['$scope', '$http', function ($scope, $http) {
      $scope.user = {};
      var username = "Hello";

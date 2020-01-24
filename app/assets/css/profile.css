@@ -7,6 +7,16 @@
 .profile-down {
      margin: 1em 15em 10em 15em !important;
 }
+.user-success{
+   margin-left: 20px;
+   margin-top: 10px;
+    height:40px; 
+    width:40px;
+
+    position: fixed;
+
+  border-radius: 50%;
+}
 
 .profile-img {
      height: 200px;

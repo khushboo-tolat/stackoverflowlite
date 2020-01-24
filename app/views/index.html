@@ -13,8 +13,7 @@
           <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
           <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
           <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
-          <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
-          <script src="//cdnjs.cloudflare.com/ajax/libs/angular-moment/0.9.0/angular-moment.min.js"></script>
+         
           <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
           <!-- Personal JS Files  -->
@@ -43,7 +42,7 @@
           </script>
      </head>
      <body ng-app="routeApp">
-          <header id="header" class="horizontal-header">
+          <header id="header"  class="horizontal-header" ng-controller="headerCtrl">
           <!-- start header nav-->                   
                <ul>
                     <li>
@@ -52,12 +51,18 @@
                     <li>
                          <input type="text" name="Search" placeholder="Explore Questions" class="search"/>
                     </li>
-                    <li>
-                         <button class="login-btn">Login</button>
+                    <li ng-hide="islogIn">
+                         <button   class="login-btn">Login</button>
                     </li>
-                    <li>
-                         <button class="login-btn">SignUp</button>
+                    <li ng-hide="islogIn">
+                         <button  class="login-btn">SignUp</button>
                     </li>
+                    <li ng-show="islogIn">
+                           <a  ui-sref="Profile" ><img class="success-icon" src="http://localhost/stackoverflowlite/app/assets/images/default.png" alt="user"></a>  
+                    </li> 
+                     <li ng-show="islogIn">
+                           <button  class="login-btn-success">Log out</button>  
+                    </li> 
                </ul>
                </header>
 
