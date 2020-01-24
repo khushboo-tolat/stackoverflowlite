@@ -14,7 +14,7 @@ routeApp.config(function($stateProvider, $urlRouterProvider) {
      $stateProvider
      .state("QuesList", {
           url: "/Timeline",
-          templateUrl: "http://localhost/stackoverflowlite/app/views/queslist.html",
+          templateUrl: "http://localhost/stackoverflowlite/app/views/qview.html",
           controller: "quesCtrl"
      })
      .state("QuesView", {

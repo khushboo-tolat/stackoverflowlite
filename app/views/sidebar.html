@@ -1,65 +1,11 @@
-<div class="mdc-card my-card" style="float: right;">
+<div class="mdc-card my-card" style="float: right;" ng-controller="sbCtrl">
   <div>
     <h2>Tags</h2>
     <div class="mdc-chip-set" role="grid">
-      <div class="mdc-chip" role="row">
+      <div class="mdc-chip" role="row" ng-repeat='c in content1'>
         <div class="mdc-chip__ripple"></div>
         <span role="gridcell">
-          <span role="button" tabindex="0" class="mdc-chip__text">Chip One</span>
-        </span>
-      </div>
-      <div class="mdc-chip" role="row">
-        <div class="mdc-chip__ripple"></div>
-        <span role="gridcell">
-          <span role="button" tabindex="-1" class="mdc-chip__text">Chip Two</span>
-        </span>
-      </div>
-      <div class="mdc-chip" role="row">
-        <div class="mdc-chip__ripple"></div>
-        <span role="gridcell">
-          <span role="button" tabindex="0" class="mdc-chip__text">Chip One</span>
-        </span>
-      </div>
-      <div class="mdc-chip" role="row">
-        <div class="mdc-chip__ripple"></div>
-        <span role="gridcell">
-          <span role="button" tabindex="-1" class="mdc-chip__text">Chip Two</span>
-        </span>
-      </div>
-      <div class="mdc-chip" role="row">
-        <div class="mdc-chip__ripple"></div>
-        <span role="gridcell">
-          <span role="button" tabindex="0" class="mdc-chip__text">Chip One</span>
-        </span>
-      </div>
-      <div class="mdc-chip" role="row">
-        <div class="mdc-chip__ripple"></div>
-        <span role="gridcell">
-          <span role="button" tabindex="-1" class="mdc-chip__text">Chip Two</span>
-        </span>
-      </div>
-      <div class="mdc-chip" role="row">
-        <div class="mdc-chip__ripple"></div>
-        <span role="gridcell">
-          <span role="button" tabindex="0" class="mdc-chip__text">Chip One</span>
-        </span>
-      </div>
-      <div class="mdc-chip" role="row">
-        <div class="mdc-chip__ripple"></div>
-        <span role="gridcell">
-          <span role="button" tabindex="-1" class="mdc-chip__text">Chip Two</span>
-        </span>
-      </div>
-      <div class="mdc-chip" role="row">
-        <div class="mdc-chip__ripple"></div>
-        <span role="gridcell">
-          <span role="button" tabindex="0" class="mdc-chip__text">Chip One</span>
-        </span>
-      </div>
-      <div class="mdc-chip" role="row">
-        <div class="mdc-chip__ripple"></div>
-        <span role="gridcell">
-          <span role="button" tabindex="-1" class="mdc-chip__text">Chip Two</span>
+          <span ui-sref="tag({ tname: c.tagName })" role="button" tabindex="0" class="mdc-chip__text">{{ c.tagName }}</span>
         </span>
       </div>
     </div>
@@ -68,10 +14,10 @@
   <div class="sort">
     <h2>Filter Questions</h2>
     <div>
-      <select class="dropdown dropbtn">
+      <select class="dropdown dropbtn" ng-change="sortfunction(sortselect)" ng-model="sortselect">
         <option value="time">Recently Added</option>
-        <option value="votes">Most Votes</option>
         <option value="views">Most Viewed</option>
+        <option value="votes">Most Votes</option>
       </select>
     </div>
   </div>
