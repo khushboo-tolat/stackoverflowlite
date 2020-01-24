@@ -14,6 +14,77 @@ profile.controller('headerCtrl',function($scope,$http){
 });
 
 profile.controller('profileCtrl', ['$scope', '$http', function ($scope, $http) {
+
+     var profile= document.getElementById("profile");
+       var upload=document.getElementById("imageupload") ;
+       profile.onclick = function(){
+            upload.click();
+       };
+       $scope.form=[];
+       $scope.files=[];
+     
+      $scope.uploadedFile=function(element){
+          $scope.currentFile = element.files[0];
+          var rander=new FileReader();
+
+          rander.onload=function(event){
+            profile.src=URL.createObjectURL(element.files[0]);
+
+            $scope.image_source=event.target.result
+            $scope.$apply(function($scope){
+              $scope.files=element.files;
+            })
+          }
+          rander.readAsDataURL(element.files[0]);
+
+          $scope.imageupload=element.files[0];
+          console.log($scope.imageupload);
+          var fd = new FormData();
+           fd.append('file', element.files[0]);
+           fd.append('name', $scope.imageupload.name);
+           $http.post("http://localhost/stackoverflowlite/index.php/Profile/profileUpload", fd, {
+               transformRequest: angular.identity,
+               headers: {'Content-Type': undefined,'Process-Data': false}
+           })
+           .success(function(data){
+              console.log("Success",data);
+           })
+           .error(function(data){
+              console.log("error",data);
+           });
+          return;
+          
+        };
+
+
+        $scope.getProfile=function(){
+         $http({
+            method:'GET',
+            url : 'http://localhost/stackoverflowlite/index.php/Profile/getProfile',
+            responseType : 'arraybuffer',
+         }).then(function(response){
+              console.log(response);
+              // $scope.info={};
+              str= _arrayBufferToBase64(response.data);
+              console.log(str);
+              // console.log("adbasbdkjsab");
+            },function(response){
+              console.error('error in getting static img.');
+          });
+      }
+
+      function _arrayBufferToBase64(buffer){
+        var binary='';
+        var bytes=new Uint8Array(buffer);
+        var len= bytes.byteLength;
+        for(var i=0 ; i<len ; i++ ){
+            binary +=String.fromCharCode(bytes[i]);
+        }
+
+        return window.btoa(binary)
+      }
+      $scope.getProfile();
+
      $scope.user = {};
      var username = "Hello";
      $scope.getUsers = function(){
@@ -156,6 +227,71 @@ profile.controller('profileCtrl', ['$scope', '$http', function ($scope, $http) {
      }
      $scope.getUserComment();
      
+}]);
+
+// Code for Question upload Page
+
+profile.controller('postquesCtrl', ['$scope', '$http', function($scope,$http){
+     //window.daatat =$scope;
+// console.log("asbhdhsaaskbakjba,bjacsj,asjc");
+  // $scope.title;
+  // $scope.bodies;
+  //$scope.error="";
+  //function
+  $scope.info = {val:true};
+   $scope.post=function(){
+  if(!$scope.bodies){
+    $scope.error = "description is required";
+  }
+  else{
+    $http({
+      method:'post',
+      url:'http://localhost/stackoverflowlite/index.php/indexController/insert',
+      datatype:'json',
+      data:{Title:$scope.title,Body:$scope.bodies,Tags:$scope.tag}
+  
+    }).then(function(res){
+      console.log(res.data);
+    });
+  }
+};
+
+}]);
+
+profile.directive('ckEditor', function() {
+  return {
+    require: '?ngModel',
+    link: function(scope, elm, attr, ngModel) {
+      var ck = CKEDITOR.replace(elm[0]);
+
+      if (!ngModel) return;
+
+      ck.on('pasteState', function() {
+        scope.$apply(function() {
+          ngModel.$setViewValue(ck.getData());
+        });
+      });
+
+      ngModel.$render = function(value) {
+        ck.setData(ngModel.$viewValue);
+      };
+    }
+  };
+});
+
+
+// Question view page
+
+profile.controller("comments",['$scope','$window','$http',function($scope,$window,$http){
+
+  $scope.Qcmt=false;
+
+  $scope.show=function(){
+    if($scope.Qcmt)
+      $scope.Qcmt=false;
+    else
+      $scope.Qcmt=true;
+  }
 }]);
 
 

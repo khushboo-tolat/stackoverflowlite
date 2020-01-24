@@ -7,12 +7,17 @@
           }
 
           function get_user_details() {
-               return $this->db->select('*')
-                              ->where('userId',1)
+               return $this->db->select('userId,userName,fullName,email,company,designation')
+                              ->where('userId',26)
                               ->get('tbluser')
-                              ->result();
+                              ->result_array();
+
           }
 
+          function get_profile(){
+               var_dump($this->db->select('photo')->where('userId',29)->get('tbluser')->result_array());
+          }
+          
           function update_user_details($user) {
               $this->db->where('userId',1)
                          ->update('tbluser',$user); 
@@ -139,6 +144,14 @@
                $comment = array_merge($commentQ, $commentA);
 
                return $comment;
+          }
+
+          
+          function uploadProfile($data){
+
+                    $this->db->where('userId',26);
+               $this->db->update('tbluser', array('photo' =>file_get_contents($data)));
+
           }
      }
 ?>

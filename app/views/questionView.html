@@ -1,0 +1,85 @@
+<div class="mdc-card qcard" ng-controller="comments">
+  	<div class="qtitle">
+  		<b>Question Title</b>
+  	</div>
+  	<div class="qstatus">
+  		<span class="statusbox"><span class="minTitle">Asked</span> today</span>
+
+  		<span class="statusbox"><span class="minTitle">Viewed</span> 21</span>
+  		<div class="pos">
+  			<button class="mdc-button--outlined askBtn">Ask Question</button>
+  		</div>
+  	</div>
+
+  	<div class="Qbody">
+  		<div class="vote">
+  			<center>
+  			<i class="material-icons vote-icon">thumb_up_alt</i>
+  			<span style="font-size: 20px;">25</span>
+  			<i class="material-icons vote-icon">thumb_down_alt</i>
+  			</center>
+  		</div>
+  		<div class="description"><div c></div>
+  			<p>The guitar chords of Hum kis gali jaa rahe hai are three in number and they are D, A, & G. The melody has been played in the D scale with a moderately paced tempo and a signature 4/4 beat. The chords of Hum kis gali jaa rahe hai have a smooth and harmonious progression and follow a strumming pattern of DDUUD.
+  			</p>
+  			<button class="mdc-button cmtBtn" ng-click="show()">comment</button>
+  		</div>
+  	</div>
+  	<div class="ansbox " style="margin-left: 7rem !important" ng-show="Qcmt">
+  		<textarea  ng-model="bodies" class="textbox cmt" 
+				  data-post-type-id="1" cols="92" rows="3" placeholder="Write Your Comment Here ...!"></textarea>
+		<button class="mdc-button--outlined cmtpostbtn ansbtn">Upload </button>
+	</div>
+  	<div class="ansHeading">3 Answers</div>
+  	<div class="Qbody ">  		
+  		<div class="vote">
+  			<center>
+  			<i class="material-icons vote-icon">thumb_up_alt</i>
+  			<span style="font-size: 20px;">25</span>
+  			<i class="material-icons vote-icon">thumb_down_alt</i>
+  			</center>
+  		</div>
+  		<div class="description"><div c></div>
+  			<p>The guitar chords of Hum kis gali jaa rahe hai are three in number and they are D, A, & G. The melody has been played in the D scale with a moderately paced tempo and a signature 4/4 beat. The chords of Hum kis gali jaa rahe hai have a smooth and harmonious progression and follow a strumming pattern of DDUUD.
+  			</p>
+  			<button class="mdc-button cmtBtn">comment</button>
+  		</div>
+  	</div>
+  	<div class="Qbody ">  		
+  		<div class="vote">
+  			<center>
+  			<i class="material-icons vote-icon">thumb_up_alt</i>
+  			<span style="font-size: 20px;">25</span>
+  			<i class="material-icons vote-icon">thumb_down_alt</i>
+  			</center>
+  		</div>
+  		<div class="description"><div c></div>
+  			<p>The guitar chords of Hum kis gali jaa rahe hai are three in number and they are D, A, & G. The melody has been played in the D scale with a moderately paced tempo and a signature 4/4 beat. The chords of Hum kis gali jaa rahe hai have a smooth and harmonious progression and follow a strumming pattern of DDUUD.
+  			</p>
+  			<button class="mdc-button cmtBtn">comment</button>
+  		</div>
+  	</div>
+  	<div class="Qbody border">  		
+  		<div class="vote">
+  			<center>
+  			<i class="material-icons vote-icon">thumb_up_alt</i>
+  			<span style="font-size: 20px;">25</span>
+  			<i class="material-icons vote-icon">thumb_down_alt</i>
+  			</center>
+  		</div>
+  		<div class="description"><div c></div>
+  			<p>The guitar chords of Hum kis gali jaa rahe hai are three in number and they are D, A, & G. The melody has been played in the D scale with a moderately paced tempo and a signature 4/4 beat. The chords of Hum kis gali jaa rahe hai have a smooth and harmonious progression and follow a strumming pattern of DDUUD.
+  			</p>
+  			<button class="mdc-button cmtBtn">comment</button>
+  		</div>
+  	</div>
+
+  	<div class="ansHeading">Post Your Answer</div>
+  	<div class="ansbox">
+  		<textarea  ck-editor required="true" name="body" ng-model="bodies" class="textbox" 
+				  data-post-type-id="1" cols="92" rows="15" ></textarea>
+		<button class="mdc-button--outlined ansbtn">Post Answer</button>
+  	</div>
+</div>
+<div sidebar></div>
+

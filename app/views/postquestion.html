@@ -1,0 +1,36 @@
+<div class="post-body" ng-controller="postquesCtrl" >
+	<h1 class="h1-post">Ask a public Question</h1>
+	
+	<div class="card">
+		<!--  -->
+		<form class="form" id="postQues">
+			<div class="title">
+				<label class="post-label">Title</label><br>
+				<p>Be specific and imagine you’re asking a question to another person</p>
+				<input type="text" name="question" class="textbox" ng-model="title" placeholder="e.g. What is Machine learning ?" required><br>
+			</div>
+			<div class="bodies">
+				<label class="post-label">Body</label><br>
+				<p>Include all the information someone would need to answer your question</p>
+				<!-- <input type="text" name="question"><br>-->
+					
+				  <textarea  ck-editor required="true" name="body" ng-model="bodies" class="textbox" 
+				  data-post-type-id="1" cols="92" rows="15" ></textarea>
+
+			<!-- <span >{{error}}</span>  -->                 
+	        </div>
+			<div class="tags">
+				<label class="post-label">Tags</label><br>
+				<p>Add up to 5 tags to describe what your question is about</p>
+				<input type="text" class="textbox" placeholder="e.g. (Machine learning ,html,sql)" name="tag" ng-model="tag"  ><br> 
+			</div>
+			<div class="post">
+				<button class="postbutton" style="float: left" ng-click="post()">Post Your Question</button>
+				<!-- <input type="submit" style="float: right;" class="postbutton" onclick="document.getElementById('postQues').reset()" value="Reset"> -->
+				<button class="postbutton" style="float: right;" onclick="CKEDITOR.instances.body.setData('');document.getElementById('postQues').reset();">Reset</button>
+			</div>
+		</form>
+	</div>
+</div>
+
+<div sidebar></div>

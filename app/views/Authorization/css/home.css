@@ -1,0 +1,91 @@
+/* Header CSS */
+.horizontal-header{
+	background-color: #d8cdcd;
+	height: 60px;
+	margin: -8px -8px 0px -8px;
+
+}
+.image-logo{
+	margin-top: 2px;
+	height:30px; 
+	width:150px;
+}
+.search{
+	width: 900px;
+	border-radius: 5px;
+	margin-left: 20px;
+	margin-top: 10px;
+	padding: 10px;
+}
+.horizontal-header ul li p{
+	float: left;
+}
+.horizontal-header ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+.horizontal-header ul li {
+ 	display: inline;
+}
+
+
+.login-btn{
+	margin-left: 20px; 
+	border-radius: 5px;
+	padding: 10px;
+	width: 80px;
+	color: black;
+	text-align: center;
+	text-decoration: none;
+}
+
+li a.hover{
+  color: white;
+  background-color: #F48024;
+  text-align: center;
+  text-decoration: none;
+}
+
+/* Sidebar CSS */
+.my-card {
+     height: 550px;
+     min-height: 100%;
+     width: 20em;
+     padding: 1em;
+     margin-right: -8px !important;
+}
+
+.sort {
+     margin-top: 20px;
+     border-top: 1px solid grey;
+}
+
+.dropdown {
+     position: relative;
+     display: inline-block;
+}
+
+.dropbtn {
+     background-color: ghostwhite;
+     color: white;
+     padding: 10px;
+     font-size: 17px;
+     border: none;
+     cursor: pointer;
+     color: black;
+}
+
+/* footer CSS */
+
+.footer {
+     position: fixed;
+     left: 0;
+     bottom: 0;
+     width: 100%;
+     background-color: #d8cdcd;
+     padding-top: 20px;
+     padding-bottom: 20px;
+     padding-left: 10px;
+}

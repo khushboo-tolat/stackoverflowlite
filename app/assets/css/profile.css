@@ -23,6 +23,7 @@
      width: 200px;
      border-radius: 10%;
      margin-right: 0px;   
+     cursor: pointer;
 }
 
 .profile-content, .profile-content input {

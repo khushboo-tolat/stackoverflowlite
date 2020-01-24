@@ -9,22 +9,22 @@ var routeApp = angular.module("routeApp", ['ui.router']);
 
 
 routeApp.config(function($stateProvider, $urlRouterProvider) {
-     $urlRouterProvider.otherwise("/AskQuestion");
+     $urlRouterProvider.otherwise("/Profile");
 
      $stateProvider
      .state("QuesList", {
-          url: "/Timeline",
+          url: "/QuesList",
           templateUrl: "http://localhost/stackoverflowlite/app/views/qview.html",
           controller: "quesCtrl"
      })
      .state("QuesView", {
-          url: "/QuestionView",
-          templateUrl: "http://localhost/stackoverflowlite/app/views/quesview.html",
+          url: "/QuesView",
+          templateUrl: "http://localhost/stackoverflowlite/app/views/questionView.html",
           //controller: "quesviewCtrl"
      })
-     .state("QuesAsk", {
-          url: "/AskQuestion",
-          templateUrl: "http://localhost/stackoverflowlite/app/views/postques.html",
+     .state("postQ", {
+          url: "/postQ",
+          templateUrl: "http://localhost/stackoverflowlite/app/views/postquestion.html",
           controller: "postquesCtrl"
      })
      .state("Profile", {
@@ -33,4 +33,10 @@ routeApp.config(function($stateProvider, $urlRouterProvider) {
           controller: "profileCtrl"
          
      })
+});
+
+routeApp.directive('sidebar',function(){
+     return {
+          templateUrl:'http://localhost/stackoverflowlite/app/views/sidebar.html'
+     };
 });
