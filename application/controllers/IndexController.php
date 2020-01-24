@@ -11,7 +11,7 @@
         $this->load->model('PostQue_m');
     }
 
-    public function Login(){
+    public function login(){
         $data=json_decode(file_get_contents("php://input"),true);
         // $data = ['username'=>"Dinesh0098","password"=>"Dinesh0098"];
         $response=$this->logModel->getPassword($data);
@@ -44,7 +44,7 @@
         var_dump($this->session->all_userdata());
     }
 
-    public function forgotpassword(){
+    public function forgotPassword(){
         echo "reached at forgot password page";
     }
 

@@ -7,7 +7,7 @@ myApp.controller('regController', function($scope, $http,$window){
 		
 		$http({
 			method:"POST",
-			url: 'http://localhost/stackoverflowlite/index.php/indexController/checkUsername',
+			url: 'http://localhost/stackoverflowlite/index.php/IndexController/checkUsername',
 			data:{username:$scope.userName},
 		}).then(function successCallBack(response){		
 			
@@ -22,7 +22,7 @@ myApp.controller('regController', function($scope, $http,$window){
 
 		$http({
 			method:"POST",
-			url:'http://localhost/stackoverflowlite/index.php/indexController/checkEmail',
+			url:'http://localhost/stackoverflowlite/index.php/IndexController/checkEmail',
 			data:{email:$scope.email},
 		}).then(function successCallBack(response){
 			if(response.data>0)
@@ -38,7 +38,7 @@ myApp.controller('regController', function($scope, $http,$window){
      	  else if($scope.password === $scope.confirmPassword){
 	           $http({
 	               method: "POST",
-	               url: 'http://localhost/stackoverflowlite/index.php/indexController/register',
+	               url: 'http://localhost/stackoverflowlite/index.php/IndexController/register',
 	               data: { username: $scope.userName , email : $scope.email , password : $scope.password , fullname : $scope.fullName},
 	           });
 	           	$window.location.href="http://localhost/stackoverflowlite/app/views/index.html";  
@@ -56,7 +56,7 @@ myApp.controller('loginController',function($scope,$http,$window,$state){
 		
 		$http({
 			method:"POST",
-			url:'http://localhost/stackoverflowlite/index.php/indexController/login',
+			url:'http://localhost/stackoverflowlite/index.php/IndexController/login',
 			data:{ username: $scope.userName, password: $scope.password},
 		});
 
