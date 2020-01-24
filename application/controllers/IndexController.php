@@ -6,27 +6,42 @@
     public function  __construct(){
         parent::__construct();
         $this->load->model('regModel');
-        //$this->load->model('logModel');
-        
+        $this->load->model('logModel');
+        $this->load->model('Profile_m');
+        $this->load->model('PostQue_m');
     }
 
     public function Login(){
         $data=json_decode(file_get_contents("php://input"),true);
-
+        // $data = ['username'=>"Dinesh0098","password"=>"Dinesh0098"];
         $response=$this->logModel->getPassword($data);
-
+        // var_dump($response);
         if(!empty($response)){
             $passwd=$response[0]["password"];     
             
             if($this->encrypt->sha1($data["password"]) == $passwd)
             {
                 echo "success";
+                var_dump($response[0]);
                 $this->session->set_userdata('userid',$response[0]["userId"]);
                 echo $this->session->userdata('userid');
-                // $this->load->helper('url');
-                // redirect(base_url('index.php/IndexController/profile'));
+                die();
+            }
+            else{
+                echo "wrong";
+                die();
             }
         }
+        // echo "string";
+        var_dump($this->session->all_userdata());
+    }
+
+    public function test()
+    {
+        // $this->session->sess_destroy();
+        $data=json_decode(file_get_contents("php://input"),true);
+        // $this->session->set_userdata('test','test1');
+        var_dump($this->session->all_userdata());
     }
 
     public function forgotpassword(){
@@ -67,5 +82,26 @@
        
             $this->regModel->reg_form($user);
     }
- }
+
+     public function insert(){
+        
+        $request=json_decode(file_get_contents('php://input'),true);
+          $title = $request["Title"];
+          $body = $request["Body"];
+          $tags = $request["Tags"];
+         /* if(empty($title) || empty($body))
+          {
+               echo json_encode(array('success'=>'0'));
+               exit();
+          }*/
+        $data=[
+                "title"=>$title,
+                "body"=>$body,
+                "tag"=>$tags
+        ];
+        var_dump($data);
+        if(!empty($data))
+            $this->PostQue_m->insert_data($data);
+    }
+}
 ?>
