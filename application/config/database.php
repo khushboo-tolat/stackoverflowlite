@@ -48,10 +48,10 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'root';
-$db['default']['password'] = '';
-$db['default']['database'] = 'stackoverflowlite';
+$db['default']['hostname'] = '35.154.198.60';
+$db['default']['username'] = 'almadev9';
+$db['default']['password'] = '17231723';
+$db['default']['database'] = 'stackoverflow_lite';
 $db['default']['dbdriver'] = 'mysqli';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
