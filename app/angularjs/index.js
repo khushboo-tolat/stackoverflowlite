@@ -4,64 +4,64 @@ var app=angular.module('routeApp',['ui.router']);
  $qProvider.errorOnUnhandledRejections(false);
  }]);
 
- app.config(function($stateProvider,$urlRouterProvider){
-   $urlRouterProvider.otherwise("/qlist");
-   $stateProvider
-   .state("qlist",{
-     url:'/qlist',
-     views: {
-         "main":{
-           templateUrl : 'http://localhost/stackoverflowliteproject/app/qview.html'
-           //controller : 'quesCtrl'
-         }
-     }
-   })
-   .state("tag",{
-     url:'/tag/:tname',
-     views: {
-       "main":{
-           templateUrl : 'http://localhost/stackoverflowliteproject/app/samp.html'
-           //controller:'samp'
-         }
-     }
-   })
-   .state("votes",{
-     url:'/votes',
-     views: {
-       "main":{
-           templateUrl : 'http://localhost/stackoverflowliteproject/app/samp.html'
-           //controller:'samp'
-         }
-     }
- })
-   .state("views",{
-     url:'/views',
-     views: {
-       "main":{
-           templateUrl : 'http://localhost/stackoverflowliteproject/app/samp.html'
-           //controller:'samp'
-         }
-     }
-   })
-   .state("alltags",{
-     url:"/alltags",
-     views: {
-       "main":{
-           templateUrl : 'http://localhost/stackoverflowliteproject/app/tpage.html'
-           //controller:'tagCtrl'
-         }
-     }
-   })
-   .state("quesdetail",{
-     url:"/quesdetail/:qid",
-     views:{
-       "main":{
-         templateUrl : 'http://localhost/stackoverflowliteproject/app/quesdetail.html'
-         //controller: 'quesdetailCtrl'
-       }
-     }
-   });
- });
+ // app.config(function($stateProvider,$urlRouterProvider){
+ //   $urlRouterProvider.otherwise("/qlist");
+ //   $stateProvider
+ //   .state("qlist",{
+ //     url:'/qlist',
+ //     views: {
+ //         "main":{
+ //           templateUrl : 'http://localhost/stackoverflowliteproject/app/qview.html'
+ //           //controller : 'quesCtrl'
+ //         }
+ //     }
+ //   })
+ //   .state("tag",{
+ //     url:'/tag/:tname',
+ //     views: {
+ //       "main":{
+ //           templateUrl : 'http://localhost/stackoverflowliteproject/app/samp.html'
+ //           //controller:'samp'
+ //         }
+ //     }
+ //   })
+ //   .state("votes",{
+ //     url:'/votes',
+ //     views: {
+ //       "main":{
+ //           templateUrl : 'http://localhost/stackoverflowliteproject/app/samp.html'
+ //           //controller:'samp'
+ //         }
+ //     }
+ // })
+ //   .state("views",{
+ //     url:'/views',
+ //     views: {
+ //       "main":{
+ //           templateUrl : 'http://localhost/stackoverflowliteproject/app/samp.html'
+ //           //controller:'samp'
+ //         }
+ //     }
+ //   })
+ //   .state("alltags",{
+ //     url:"/alltags",
+ //     views: {
+ //       "main":{
+ //           templateUrl : 'http://localhost/stackoverflowliteproject/app/tpage.html'
+ //           //controller:'tagCtrl'
+ //         }
+ //     }
+ //   })
+ //   .state("quesdetail",{
+ //     url:"/quesdetail/:qid",
+ //     views:{
+ //       "main":{
+ //         templateUrl : 'http://localhost/stackoverflowliteproject/app/quesdetail.html'
+ //         //controller: 'quesdetailCtrl'
+ //       }
+ //     }
+ //   });
+ // });
 
  app.controller("quesdetailCtrl",['$scope','$http','$stateParams',function($scope,$http,$stateParams){
    window.datascope = $scope;

@@ -31,12 +31,12 @@ routeApp.config(function($stateProvider, $urlRouterProvider) {
           url: "/Profile",
           templateUrl: "http://localhost/stackoverflowlite/app/views/profile.html",
           controller: "profileCtrl"
-         
+
      })
 });
 
-routeApp.directive('sidebar',function(){
-     return {
-          templateUrl:'http://localhost/stackoverflowlite/app/views/sidebar.html'
-     };
-});
+// routeApp.directive('sidebar',function(){
+//      return {
+//           templateUrl:'http://localhost/stackoverflowlite/app/views/sidebar.html'
+//      };
+// });
