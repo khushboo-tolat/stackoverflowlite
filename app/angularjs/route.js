@@ -43,18 +43,18 @@ routeApp.config(function($stateProvider, $urlRouterProvider) {
      // })
    .state("tag",{
      url:'/tag/:tname',
-    templateUrl : 'http://localhost/stackoverflowlite/app/views/samp.html'
-           //controller:'samp'
+    templateUrl : 'http://localhost/stackoverflowlite/app/views/samp.html',
+           controller:'samp'
    })
    .state("votes",{
      url:'/votes',
-     templateUrl : 'http://localhost/stackoverflowlite/app/views/samp.html'
-           //controller:'samp'
+     templateUrl : 'http://localhost/stackoverflowlite/app/views/samp.html',
+           controller:'samp'
  })
    .state("views",{
      url:'/views',
-    templateUrl : 'http://localhost/stackoverflowlite/app/views/samp.html'
-           //controller:'samp'
+    templateUrl : 'http://localhost/stackoverflowlite/app/views/samp.html',
+           controller:'samp'
    })
    .state("alltags",{
      url:"/alltags",
