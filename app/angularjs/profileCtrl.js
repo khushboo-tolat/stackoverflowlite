@@ -16,10 +16,10 @@ profile.controller('headerCtrl',function($scope,$http){
 profile.controller('profileCtrl', ['$scope', '$http', function ($scope, $http) {
 
      var profile= document.getElementById("profile");
-       var upload=document.getElementById("imageupload") ;
-       profile.onclick = function(){
-            upload.click();
-       };
+       var upload=document.getElementById("imageupload");
+     //   profile.onclick = function(){
+     //        upload.click();
+     //   };
        $scope.form=[];
        $scope.files=[];
      
@@ -86,6 +86,7 @@ profile.controller('profileCtrl', ['$scope', '$http', function ($scope, $http) {
       $scope.getProfile();
 
      $scope.user = {};
+     $scope.item = false;
      var username = "Hello";
      $scope.getUsers = function(){
       $http({
@@ -99,6 +100,15 @@ profile.controller('profileCtrl', ['$scope', '$http', function ($scope, $http) {
       }); 
      }
      $scope.getUsers();
+
+     $scope.change = function() {
+          if($scope.item){
+               $scope.item = false;
+          }
+          else{
+               $scope.item = true;  
+          }
+     }
 
      $scope.isvalid=false;
      $scope.checkUsername=function(){		
@@ -138,7 +148,7 @@ profile.controller('profileCtrl', ['$scope', '$http', function ($scope, $http) {
 
      $scope.validUser = false;
      $scope.check = function() {
-          if (1 == $scope.user.userId) {
+          if (29 == $scope.user.userId) {
                $scope.validUser = true; 
           }
           else { 
@@ -151,8 +161,8 @@ profile.controller('profileCtrl', ['$scope', '$http', function ($scope, $http) {
      $scope.checkReportUser = function() {
           $http({
 			method:"POST",
-			url: 'http://localhost/stackoverflowlite/index.php/Profile/checkReportedUser',
-			data:{userId: $scope.user.userId, reportedId: 2},
+			url: 'http://localhost/stackoverflowlite/index.php/Report/checkReportedUser',
+			data:{userId: $scope.user.userId},
 		}).then(function successCallBack(response){		
                $scope.checkReportedUser = response.data;
           
@@ -169,13 +179,13 @@ profile.controller('profileCtrl', ['$scope', '$http', function ($scope, $http) {
           });
      }
 
-     $scope.reportUser = function(userId, reporterId) {
+     $scope.reportUser = function(userId) {
           if($scope.checkReportedUser > 0) {
                $http({
                     method: "POST",
-                    url: "http://localhost/stackoverflowlite/index.php/Profile/delete_report_user",
+                    url: "http://localhost/stackoverflowlite/index.php/Report/delete_report_user",
                     dataType: 'json',
-                    data: {userId: userId, reportedId: reporterId},
+                    data: {userId: userId},
                     headers: { "Content-Type": "application/json" }
                }).then(function successCallBack(response){
                     $scope.checkReportUser();  
@@ -184,9 +194,9 @@ profile.controller('profileCtrl', ['$scope', '$http', function ($scope, $http) {
           else {
                $http({
                     method: "POST",
-                    url: "http://localhost/stackoverflowlite/index.php/Profile/insert_report_user",
+                    url: "http://localhost/stackoverflowlite/index.php/Report/insert_report_user",
                     dataType: 'json',
-                    data: {userId: userId, reportedId: reporterId},
+                    data: {userId: userId},
                     headers: { "Content-Type": "application/json" }
                }).then(function successCallBack(response){
                     $scope.checkReportUser();  
@@ -221,8 +231,8 @@ profile.controller('profileCtrl', ['$scope', '$http', function ($scope, $http) {
                method: 'get',
                url: 'http://localhost/stackoverflowlite/index.php/Profile/get_comment'
           }).then(function successCallback(response) {
-               $scope.comment = response.data;
-               $scope.comment_length = $scope.comment.length;
+               $scope.comm = response.data;
+               $scope.comm_length = $scope.comm.length;
           }); 
      }
      $scope.getUserComment();

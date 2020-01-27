@@ -1,41 +1,44 @@
 <?php
  defined('BASEPATH') or exit("Path not set");
 
- class IndexController extends CI_Controller{
+ class indexController extends CI_Controller{
      
     public function  __construct(){
         parent::__construct();
         $this->load->model('regModel');
         $this->load->model('logModel');
         $this->load->model('Profile_m');
-        $this->load->model('PostQue_m');
+        //$this->load->model('PostQue_m');
     }
 
     public function login(){
+        //$this->session->sess_destroy();
         $data=json_decode(file_get_contents("php://input"),true);
-        // $data = ['username'=>"Dinesh0098","password"=>"Dinesh0098"];
         $response=$this->logModel->getPassword($data);
-        // var_dump($response);
         if(!empty($response)){
             $passwd=$response[0]["password"];     
             
             if($this->encrypt->sha1($data["password"]) == $passwd)
             {
-                echo "success";
-                var_dump($response[0]);
                 $this->session->set_userdata('userid',$response[0]["userId"]);
                 echo $this->session->userdata('userid');
-                die();
             }
-            else{
-                echo "wrong";
-                die();
+            else {
+                echo "fail";
             }
         }
-        // echo "string";
-        var_dump($this->session->all_userdata());
     }
 
+    function checkSession() {
+        //$this->session->set_userdata('userid', 1);
+        if($this->session->userdata('userid')) {
+            echo "true";
+        }
+        else{
+            echo "false";
+        }
+    }
+    
     public function test()
     {
         // $this->session->sess_destroy();
