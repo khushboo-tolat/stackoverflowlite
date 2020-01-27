@@ -38,11 +38,15 @@ routeApp.config(function($stateProvider, $urlRouterProvider) {
           controller: "profileCtrl"
 
      })
+     // .state("qlist"{
+     //    url:"/qlist",
+     //    templateUrl:"http://localhost/stackoverflowlite/app/views/qview.html"
+     // })
    .state("tag",{
      url:'/tag/:tname',
      views: {
        "main":{
-           templateUrl : 'http://localhost/stackoverflowlite/app/samp.html'
+           templateUrl : 'http://localhost/stackoverflowlite/app/views/samp.html'
            //controller:'samp'
          }
      }
@@ -51,7 +55,7 @@ routeApp.config(function($stateProvider, $urlRouterProvider) {
      url:'/votes',
      views: {
        "main":{
-           templateUrl : 'http://localhost/stackoverflowlite/app/samp.html'
+           templateUrl : 'http://localhost/stackoverflowlite/app/views/samp.html'
            //controller:'samp'
          }
      }
@@ -60,7 +64,7 @@ routeApp.config(function($stateProvider, $urlRouterProvider) {
      url:'/views',
      views: {
        "main":{
-           templateUrl : 'http://localhost/stackoverflowlite/app/samp.html'
+           templateUrl : 'http://localhost/stackoverflowlite/app/views/samp.html'
            //controller:'samp'
          }
      }
@@ -75,6 +79,7 @@ routeApp.config(function($stateProvider, $urlRouterProvider) {
      }
    });
 });
+
 
 routeApp.directive('sidebar',function(){
      return {
@@ -101,6 +106,7 @@ routeApp.controller("quesdetailCtrl",['$scope','$http','$stateParams',function($
      // });
 
    });
+
 
    $scope.checkreportedQues=function(param,reporterId){
      $http({
@@ -148,7 +154,6 @@ routeApp.controller("quesdetailCtrl",['$scope','$http','$stateParams',function($
      }
    };
 
-
    $scope.checkreportedAns=function(param,reporterId){
      $http({
           method: "POST",
@@ -192,6 +197,7 @@ routeApp.controller("quesdetailCtrl",['$scope','$http','$stateParams',function($
        //      "color": "red",
        // };
        //console.log("CSS");
+
 
        $http({
             method: "POST",
@@ -287,5 +293,3 @@ routeApp.controller('quesCtrl',['$scope','$http','$stateParams', function($scope
   };
 });
   }]);
-
-    
