@@ -6,7 +6,7 @@
     <!-- Report left -->
   	<div class="qstatus">
 
-  		<span class="statusbox"><span class="minTitle">Asked</span> today</span>
+  		<span class="statusbox"><span class="minTitle">Asked</span> {{ content[0][0]["updatedTime"] | timeago }}</span>
 
   		<span class="statusbox"><span class="minTitle">Viewed</span> {{ content[0][0]["views"] }}</span>
   		<div class="pos">
@@ -25,8 +25,9 @@
   		<div class="description"><div c></div>
   			<p>{{ content[0][0]["question"] }}</p>
         <!-- Updated Time and User details -->
-  			<button class="mdc-button cmtBtn" ng-click="show()">comment</button>
         <!-- Comments for ques -->
+        <div class="display-section"></div>
+        <button class="mdc-button cmtBtn" ng-click="show()">comment</button>
   		</div>
   	</div>
   	<div class="ansbox " style="margin-left: 7rem !important" ng-show="Qcmt">
