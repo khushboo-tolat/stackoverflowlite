@@ -294,9 +294,4 @@ routeApp.controller('quesCtrl',['$scope','$http','$stateParams', function($scope
 });
 }]);
 
-routeApp.directive("sidebar",function(){
-  return {
-    templateUrl:'http://localhost/stackoverflowlite/app/views/sidebar.html'
-  }
-});
 
