@@ -1,4 +1,5 @@
 <div ng-controller="profileCtrl">
+
      <div class="mdc-card profile-up">
           <div ng-show="!item">
                <span ng-if="!validUser">
@@ -6,6 +7,7 @@
                </span>
                <span ng-if="validUser">
                     <i class="material-icons md-24 edit" ng-click="change()">edit</i>
+
                </span>
           </div>
           <div ng-show="item" ng-click="change()">
@@ -129,7 +131,7 @@
                               </td>
                          </tr>
                          <tr>
-                              <td class="table-row">Question: <a href="#" style="text-decoration: none;">{{ c.title }}</a></td>
+                              <td class="table-row">Question: <a href="#" ui-sref="QuesView({ qid: c.quesId })" style="text-decoration: none;">{{ c.title }}</a></td>
                          </tr>
                     </table> 
                </div>

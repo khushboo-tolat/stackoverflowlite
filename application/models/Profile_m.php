@@ -6,9 +6,10 @@
                parent::__construct();     
           }
 
-          function get_user_details() {
+
+          function get_user_details($id) {
                return $this->db->select('userId,userName,fullName,email,company,designation')
-                              ->where('userId',29)
+                              ->where('userId',$id)
                               ->get('tbluser')
                               ->result_array();
 
@@ -121,8 +122,9 @@
                     }
                     elseif($temp[$i]['quesId'] == NULL){
                          $commentA = $this->db->from('tblanswer a')
-                                        ->select('c.description, c.updatedTime, c.quesId, c.ansId, a.answer')
+                                        ->select('c.description, c.updatedTime, c.quesId, c.ansId, a.answer, q.quesId, q.title')
                                         ->join('tblcomment c','a.ansId = c.ansId')
+                                        ->join('tblquestion q','a.quesId = q.quesId')
                                         ->where('c.userId',29)
                                         ->get()
                                         ->result_array(); 

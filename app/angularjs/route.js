@@ -33,10 +33,9 @@ routeApp.config(function($stateProvider, $urlRouterProvider) {
           controller: "postquesCtrl"
      })
      .state("Profile", {
-          url: "/Profile",
+          url: "/Profile/:uId",
           templateUrl: "http://localhost/stackoverflowlite/app/views/profile.html",
           controller: "profileCtrl"
-
      })
      // .state("qlist"{
      //    url:"/qlist",
@@ -44,39 +43,23 @@ routeApp.config(function($stateProvider, $urlRouterProvider) {
      // })
    .state("tag",{
      url:'/tag/:tname',
-     views: {
-       "main":{
-           templateUrl : 'http://localhost/stackoverflowlite/app/views/samp.html'
+    templateUrl : 'http://localhost/stackoverflowlite/app/views/samp.html'
            //controller:'samp'
-         }
-     }
    })
    .state("votes",{
      url:'/votes',
-     views: {
-       "main":{
-           templateUrl : 'http://localhost/stackoverflowlite/app/views/samp.html'
+     templateUrl : 'http://localhost/stackoverflowlite/app/views/samp.html'
            //controller:'samp'
-         }
-     }
  })
    .state("views",{
      url:'/views',
-     views: {
-       "main":{
-           templateUrl : 'http://localhost/stackoverflowlite/app/views/samp.html'
+    templateUrl : 'http://localhost/stackoverflowlite/app/views/samp.html'
            //controller:'samp'
-         }
-     }
    })
    .state("alltags",{
      url:"/alltags",
-     views: {
-       "main":{
-           templateUrl : 'http://localhost/stackoverflowlite/app/views/tpage.html'
-           //controller:'tagCtrl'
-         }
-     }
+     templateUrl : 'http://localhost/stackoverflowlite/app/views/tpage.html',
+    controller:'tagCtrl'
    });
 });
 
@@ -212,9 +195,10 @@ routeApp.controller("quesdetailCtrl",['$scope','$http','$stateParams',function($
  routeApp.controller('tagCtrl',['$scope','$http',function($scope,$http){
    $http({
     method: 'get',
-    url: '/CodeIgniter/index.php/Tagpage/returnalltags'
+    url: '/stackoverflowlite/index.php/Tagpage/returnalltags'
    }).then(function successCallback(response) {
      // Assign response to users object
+     console.log("Tag page");
      $scope.content = response.data;
    });
  }]);
@@ -286,5 +270,6 @@ routeApp.controller('quesCtrl',['$scope','$http','$stateParams', function($scope
         console.log(data);
     });
   };
+
 });
-  }]);
+}]);

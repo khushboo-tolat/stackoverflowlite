@@ -13,16 +13,17 @@ profile.controller('headerCtrl',function($scope,$http){
 
 });
 
-profile.controller('profileCtrl', ['$scope', '$http', function ($scope, $http) {
 
-     var profile= document.getElementById("profile");
-       var upload=document.getElementById("imageupload");
-     //   profile.onclick = function(){
-     //        upload.click();
-     //   };
+profile.controller('profileCtrl', ['$scope', '$http','$stateParams', function ($scope, $http,$stateParams) {
+
+     /*var profile= document.getElementById("profile");
+       var upload=document.getElementById("imageupload") ;
+       profile.onclick = function(){
+            upload.click();
+       };
        $scope.form=[];
        $scope.files=[];
-     
+     */
       $scope.uploadedFile=function(element){
           $scope.currentFile = element.files[0];
           var rander=new FileReader();
@@ -85,13 +86,18 @@ profile.controller('profileCtrl', ['$scope', '$http', function ($scope, $http) {
       }
       $scope.getProfile();
 
+
      $scope.user = {};
      $scope.item = false;
      var username = "Hello";
+     
      $scope.getUsers = function(){
       $http({
-       method: 'get',
-       url: 'http://localhost/stackoverflowlite/index.php/Profile/get_user'
+       method: 'post',
+       url: 'http://localhost/stackoverflowlite/index.php/Profile/get_user',
+       data:{userId:$stateParams.uId},
+       dataType :'json'
+
       }).then(function successCallback(response) {
         $scope.user = response.data[0]; 
         $scope.check();   
@@ -319,16 +325,8 @@ profile.controller("quesdetailCtrl",['$scope','$http','$stateParams',function($s
      url:'/stackoverflowlite/index.php/Quesdetail',
      data: {qid: $stateParams.qid}
    }).then(function(response){
-     // console.log("js");
      $scope.content=response.data;
-     console.log(response.data);
-     $scope.checkreportedQues($stateParams.qid,'2');
-     var_dump(response.data[1]);
-     // angular.forEach( response.data[1], function(v,k){
-     //   var_dump(v);
-     //    $scope.checkreportedAns(v['ansId'],'2');
-     // });
-
+     $scope.checkreportedQues($stateParams.qid,'29');
    });
 
    $scope.checkreportedQues=function(param,reporterId){
@@ -351,6 +349,7 @@ profile.controller("quesdetailCtrl",['$scope','$http','$stateParams',function($s
        }
      });
    };
+
    $scope.reportQues=function(param,reporterId){
      if($scope.reportedques!=0){
        $http({
@@ -391,6 +390,7 @@ profile.controller("quesdetailCtrl",['$scope','$http','$stateParams',function($s
        $scope.reportedans=response.data;
      });
    };
+   
    $scope.reportAns=function(param,reporterId){
      $scope.checkreportedAns(param,reporterId);
      console.log(param);

@@ -1,4 +1,4 @@
-<div class="mdc-card my-card" style="width:20%;float:right; top:66px; right: 0;position: absolute;" ng-controller="sbCtrl">
+<!-- <div class="mdc-card my-card" style="width:20%;float:right; top:66px; right: 0;position: absolute;" ng-controller="sbCtrl">
   <div>
     <h2>Tags</h2>
     <div class="mdc-chip-set" role="grid">
@@ -16,6 +16,33 @@
     <div>
       <select class="dropdown dropbtn" ng-change="sortfunction(sortselect)" ng-model="sortselect">
         <option value="time" active>Recently Added</option>
+        <option value="views">Most Viewed</option>
+        <option value="votes">Most Votes</option>
+      </select>
+    </div>
+  </div>
+</div>
+ -->
+
+ <div class="mdc-card my-card" style="float: right; top:66px;right: 0;position: absolute;width: 22.5rem;" ng-controller="sbCtrl">
+  <div>
+    <h2>Tags</h2>
+    <div class="mdc-chip-set" role="grid">
+      <div class="mdc-chip" role="row" ng-repeat='c in content1'>
+        <div class="mdc-chip__ripple"></div>
+        <span role="gridcell">
+          <span ui-sref="tag({ tname: c.tagName })" role="button" tabindex="0" class="mdc-chip__text">{{ c.tagName }}</span>
+        </span>
+      </div>
+    </div>
+    <div style="padding-top: 5px;"><a href="#" ui-sref="alltags()" style="float: right; text-decoration: none;">View More...</a></div>
+  </div>
+  <div class="sort">
+    <h2>Filter Questions</h2>
+    <div>
+      <select class="dropdown dropbtn" ng-change="sortfunction(sortselect)" ng-model="sortselect">
+        <option value="">--Select--</option>
+        <option value="time">Recently Added</option>
         <option value="views">Most Viewed</option>
         <option value="votes">Most Votes</option>
       </select>

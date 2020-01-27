@@ -66,45 +66,17 @@
                          <button  class="login-btn">SignUp</button>
                     </li>
                     <li ng-show="islogIn">
-                           <a  ui-sref="Profile" ><img class="success-icon" src="http://localhost/stackoverflowlite/app/assets/images/default.png" alt="user"></a>
-                    </li>
+
+                           <a  ui-sref="Profile({uId:''})" ><img class="success-icon" src="http://localhost/stackoverflowlite/app/assets/images/default.png" alt="user"></a>  
+                    </li> 
+
                      <li ng-show="islogIn">
                            <button  class="login-btn-success">Log out</button>
                     </li>
                </ul>
                </header>
-
-<!-- Sidebar -->
-<div class="mdc-card my-card" style="width:20%;float: right;" ng-controller="sbCtrl">
-  <div>
-    <h2>Tags</h2>
-    <div class="mdc-chip-set" role="grid">
-      <div class="mdc-chip" role="row" ng-repeat='c in content1'>
-        <div class="mdc-chip__ripple"></div>
-        <span role="gridcell">
-          <span ui-sref="tag({ tname: c.tagName })" role="button" tabindex="0" class="mdc-chip__text">{{ c.tagName }}</span>
-        </span>
-      </div>
-    </div>
-    <div style="padding-top: 5px;"><a href="#" ui-sref="alltags()" style="float: right; text-decoration: none;">View More...</a></div>
-  </div>
-  <div class="sort">
-    <h2>Filter Questions</h2>
-    <div>
-      <select class="dropdown dropbtn" ng-change="sortfunction(sortselect)" ng-model="sortselect">
-        <option value="">--Select--</option>
-        <option value="time">Recently Added</option>
-        <option value="views">Most Viewed</option>
-        <option value="votes">Most Votes</option>
-      </select>
-    </div>
-  </div>
-</div>
                <div ui-view>
-
                </div>
-<!-- style="width:20%;float:right;" -->
-              <!-- <div sidebar ></div> -->
           <footer class="footer">
           <div style="float: right; margin-right: 20px">Copyright &copy 2020 | All rights reserved</div>
           </footer>
