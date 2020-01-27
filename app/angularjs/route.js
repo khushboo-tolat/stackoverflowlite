@@ -14,7 +14,7 @@ $qProvider.errorOnUnhandledRejections(false);
  // }]);
 
 routeApp.config(function($stateProvider, $urlRouterProvider) {
-     $urlRouterProvider.otherwise("Profile");
+     $urlRouterProvider.otherwise("QuesList");
 
      $stateProvider
      .state("QuesList", {
