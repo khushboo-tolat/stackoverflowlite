@@ -48,7 +48,7 @@ routeApp.config(function($stateProvider, $urlRouterProvider) {
        url:'/tag/:tname',
        views: {
 
-             templateUrl : 'http://localhost/stackoverflowliteproject/app/samp.html'
+             templateUrl : 'http://localhost/stackoverflowlite/app/samp.html'
              //controller:'samp'
 
        }
@@ -57,7 +57,7 @@ routeApp.config(function($stateProvider, $urlRouterProvider) {
        url:'/votes',
        views: {
 
-             templateUrl : 'http://localhost/stackoverflowliteproject/app/samp.html'
+             templateUrl : 'http://localhost/stackoverflowlite/app/samp.html'
              //controller:'samp'
 
        }
@@ -66,7 +66,7 @@ routeApp.config(function($stateProvider, $urlRouterProvider) {
        url:'/views',
        views: {
 
-             templateUrl : 'http://localhost/stackoverflowliteproject/app/samp.html'
+             templateUrl : 'http://localhost/stackoverflowlite/app/samp.html'
              //controller:'samp'
 
        }
@@ -75,7 +75,7 @@ routeApp.config(function($stateProvider, $urlRouterProvider) {
        url:"/alltags",
        views: {
 
-             templateUrl : 'http://localhost/stackoverflowliteproject/app/tpage.html'
+             templateUrl : 'http://localhost/stackoverflowlite/app/tpage.html'
              //controller:'tagCtrl'
 
        }
