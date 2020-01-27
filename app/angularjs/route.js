@@ -193,6 +193,7 @@ routeApp.controller("quesdetailCtrl",['$scope','$http','$stateParams',function($
  }]);
 
  routeApp.controller('tagCtrl',['$scope','$http',function($scope,$http){
+   console.log("TagCtrl");
    $http({
     method: 'get',
     url: '/stackoverflowlite/index.php/Tagpage/returnalltags'
