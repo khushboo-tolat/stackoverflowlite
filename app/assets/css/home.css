@@ -101,12 +101,9 @@ li a.hover{
 /* footer CSS */
 
 .footer {
-     position: fixed;
-     left: 0;
-     bottom: 0;
-     width: 100%;
+     
      background-color: #d8cdcd;
      padding-top: 20px;
-     padding-bottom: 20px;
+     padding-bottom: 40px;
      padding-left: 10px;
 }
