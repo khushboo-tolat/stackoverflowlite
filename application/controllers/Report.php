@@ -12,7 +12,7 @@
                
                $report = [
                     'userId' => $request['userId'],
-                    'reportedId' => 2
+                    'reportedId' => 29
                ];
 
                $response = $this->Report_m->check_report_details($report);
@@ -24,7 +24,7 @@
                
                $report=[
                     "userId" => $request["userId"],
-                    "reportedId" => 2
+                    "reportedId" => 29
                ];
 
                $this->Report_m->insert_report_details($report);
@@ -35,7 +35,7 @@
                
                $report=[
                     "userId" => $request["userId"],
-                    "reportedId" => 2
+                    "reportedId" => 29
                ];
 
                $this->Report_m->delete_report_details($report);

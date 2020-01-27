@@ -1,5 +1,5 @@
 var myApp = angular.module('mainApp',["ui.router"]);
-myApp.controller('regController', function($scope, $http, $window, sessionService){
+myApp.controller('regController', function($scope, $http,$window){    
 	
 	$scope.isvalid=false;
 	$scope.emailvalid=false;
@@ -7,7 +7,7 @@ myApp.controller('regController', function($scope, $http, $window, sessionServic
 		
 		$http({
 			method:"POST",
-			url: 'http://localhost/stackoverflowlite/index.php/indexController/checkUsername',
+			url: 'http://localhost/stackoverflowlite/index.php/IndexController/checkUsername',
 			data:{username:$scope.userName},
 		}).then(function successCallBack(response){		
 			
@@ -22,7 +22,7 @@ myApp.controller('regController', function($scope, $http, $window, sessionServic
 
 		$http({
 			method:"POST",
-			url:'http://localhost/stackoverflowlite/index.php/indexController/checkEmail',
+			url:'http://localhost/stackoverflowlite/index.php/IndexController/checkEmail',
 			data:{email:$scope.email},
 		}).then(function successCallBack(response){
 			if(response.data>0)
@@ -38,7 +38,7 @@ myApp.controller('regController', function($scope, $http, $window, sessionServic
      	  else if($scope.password === $scope.confirmPassword){
 	           $http({
 	               method: "POST",
-	               url: 'http://localhost/stackoverflowlite/index.php/indexController/register',
+	               url: 'http://localhost/stackoverflowlite/index.php/IndexController/register',
 	               data: { username: $scope.userName , email : $scope.email , password : $scope.password , fullname : $scope.fullName},
 	           });
 	           	$window.location.href="http://localhost/stackoverflowlite/app/views/index.html";  
@@ -50,12 +50,13 @@ myApp.controller('regController', function($scope, $http, $window, sessionServic
 });
 
 
-myApp.controller('loginController',function($scope,$http,$window,$state,sessionService){
+myApp.controller('loginController',function($scope,$http,$window,$state){
 
-	$scope.login=function(){		
+	$scope.login=function(){
+		
 		$http({
 			method:"POST",
-			url:'http://localhost/stackoverflowlite/index.php/indexController/login',
+			url:'http://localhost/stackoverflowlite/index.php/IndexController/login',
 			data:{ username: $scope.userName, password: $scope.password},
 		});
 

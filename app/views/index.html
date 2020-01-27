@@ -8,19 +8,29 @@
 
           <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
           <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
-          <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
+          <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+          <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script> -->
+          <script src="//unpkg.com/@uirouter/angularjs/release/angular-ui-router.min.js"></script>
           <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+          <script src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
+          <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+          <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+
 
           <!-- Personal JS Files  -->
           <script src="http://localhost/stackoverflowlite/app/angularjs/route.js"></script>
-          <!-- <script src="http://localhost/stackoverflowlite/app/angularjs/sessionService.js"></script> -->
-          <script src="http://localhost/stackoverflowlite/app/angularjs/profileCtrl.js"></script>
           <script src="http://localhost/stackoverflowlite/app/angularjs/relativeTimeFilter.js"></script>
+          <script src="http://localhost/stackoverflowlite/app/angularjs/profileCtrl.js"></script>
+          <script srs="http://localhost/stackoverflowlite/app/angularjs/QuesController.js"></script>
+
 
           <!-- Personal CSS Files -->
           <link rel="stylesheet" href="http://localhost/stackoverflowlite/app/assets/css/profile.css">
           <link rel="stylesheet" href="http://localhost/stackoverflowlite/app/assets/css/home.css">
+          <link rel="stylesheet" href="http://localhost/stackoverflowlite/app/assets/css/questionView.css">
+          <link rel="stylesheet" href="http://localhost/stackoverflowlite/app/assets/css/postquestion.css">
+          <link rel="stylesheet" href="http://localhost/stackoverflowlite/app/assets/css/tpage.css">
+          <link rel="stylesheet" href="http://localhost/stackoverflowlite/app/assets/css/qview.css">
 
           <script>
                function openTab(evt, tabName) {
@@ -39,8 +49,8 @@
           </script>
      </head>
      <body ng-app="routeApp">
-          <header id="header" class="horizontal-header">
-          <!-- start header nav-->                   
+          <header id="header"  class="horizontal-header" ng-controller="headerCtrl">
+          <!-- start header nav-->
                <ul>
                     <li>
                          <p><a href="index.html" ><img src="http://localhost/stackoverflowlite/app/assets/images/logo.webp" alt="Stackoverflow" class="image-logo" ></a> </p>
@@ -48,100 +58,56 @@
                     <li>
                          <input type="text" name="Search" placeholder="Explore Questions" class="search"/>
                     </li>
-                    <li>
-                         <button class="login-btn">Login</button>
+                    <li ng-hide="islogIn">
+                         <button   class="login-btn">Login</button>
                     </li>
-                    <li>
-                         <button class="login-btn">SignUp</button>
+                    <li ng-hide="islogIn">
+                         <button  class="login-btn">SignUp</button>
+                    </li>
+                    <li ng-show="islogIn">
+                           <a  ui-sref="Profile" ><img class="success-icon" src="http://localhost/stackoverflowlite/app/assets/images/default.png" alt="user"></a>
+                    </li>
+                     <li ng-show="islogIn">
+                           <button  class="login-btn-success">Log out</button>
                     </li>
                </ul>
                </header>
 
+<!-- Sidebar -->
+<div class="mdc-card my-card" style="width:20%;float: right;" ng-controller="sbCtrl">
+  <div>
+    <h2>Tags</h2>
+    <div class="mdc-chip-set" role="grid">
+      <div class="mdc-chip" role="row" ng-repeat='c in content1'>
+        <div class="mdc-chip__ripple"></div>
+        <span role="gridcell">
+          <span ui-sref="tag({ tname: c.tagName })" role="button" tabindex="0" class="mdc-chip__text">{{ c.tagName }}</span>
+        </span>
+      </div>
+    </div>
+    <div style="padding-top: 5px;"><a href="#" style="float: right; text-decoration: none;">View More...</a></div>
+  </div>
+  <div class="sort">
+    <h2>Filter Questions</h2>
+    <div>
+      <select class="dropdown dropbtn" ng-change="sortfunction(sortselect)" ng-model="sortselect">
+        <option value="time">Recently Added</option>
+        <option value="views">Most Viewed</option>
+        <option value="votes">Most Votes</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+
+
                <div ui-view>
 
                </div>
-
-               <div class="mdc-card my-card" style="float: right;">
-               <div>
-                    <h2>Tags</h2>
-                    <div class="mdc-chip-set" role="grid">
-                    <div class="mdc-chip" role="row">
-                         <div class="mdc-chip__ripple"></div>
-                         <span role="gridcell">
-                         <span role="button" tabindex="0" class="mdc-chip__text">Chip One</span>
-                         </span>
-                    </div>
-                    <div class="mdc-chip" role="row">
-                         <div class="mdc-chip__ripple"></div>
-                         <span role="gridcell">
-                         <span role="button" tabindex="-1" class="mdc-chip__text">Chip Two</span>
-                         </span>
-                    </div>
-                    <div class="mdc-chip" role="row">
-                         <div class="mdc-chip__ripple"></div>
-                         <span role="gridcell">
-                         <span role="button" tabindex="0" class="mdc-chip__text">Chip One</span>
-                         </span>
-                    </div>
-                    <div class="mdc-chip" role="row">
-                         <div class="mdc-chip__ripple"></div>
-                         <span role="gridcell">
-                         <span role="button" tabindex="-1" class="mdc-chip__text">Chip Two</span>
-                         </span>
-                    </div>
-                    <div class="mdc-chip" role="row">
-                         <div class="mdc-chip__ripple"></div>
-                         <span role="gridcell">
-                         <span role="button" tabindex="0" class="mdc-chip__text">Chip One</span>
-                         </span>
-                    </div>
-                    <div class="mdc-chip" role="row">
-                         <div class="mdc-chip__ripple"></div>
-                         <span role="gridcell">
-                         <span role="button" tabindex="-1" class="mdc-chip__text">Chip Two</span>
-                         </span>
-                    </div>
-                    <div class="mdc-chip" role="row">
-                         <div class="mdc-chip__ripple"></div>
-                         <span role="gridcell">
-                         <span role="button" tabindex="0" class="mdc-chip__text">Chip One</span>
-                         </span>
-                    </div>
-                    <div class="mdc-chip" role="row">
-                         <div class="mdc-chip__ripple"></div>
-                         <span role="gridcell">
-                         <span role="button" tabindex="-1" class="mdc-chip__text">Chip Two</span>
-                         </span>
-                    </div>
-                    <div class="mdc-chip" role="row">
-                         <div class="mdc-chip__ripple"></div>
-                         <span role="gridcell">
-                         <span role="button" tabindex="0" class="mdc-chip__text">Chip One</span>
-                         </span>
-                    </div>
-                    <div class="mdc-chip" role="row">
-                         <div class="mdc-chip__ripple"></div>
-                         <span role="gridcell">
-                         <span role="button" tabindex="-1" class="mdc-chip__text">Chip Two</span>
-                         </span>
-                    </div>
-                    </div>
-                    <div style="padding-top: 5px;"><a href="#" style="float: right; text-decoration: none;">View More...</a></div>
-               </div>
-               <div class="sort">
-                    <h2>Filter Questions</h2>
-                    <div>
-                    <select class="dropdown dropbtn">
-                         <option value="time">Recently Added</option>
-                         <option value="votes">Most Votes</option>
-                         <option value="views">Most Viewed</option>
-                    </select>
-                    </div>
-               </div>
-               </div>
-
+<!-- style="width:20%;float:right;" -->
+              <!-- <div sidebar ></div> -->
           <footer class="footer">
           <div style="float: right; margin-right: 20px">Copyright &copy 2020 | All rights reserved</div>
           </footer>
      </body>
-</html>  
+</html>

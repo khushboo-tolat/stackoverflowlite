@@ -1,0 +1,13 @@
+.link1{
+  color:blue;
+  float:right;
+  bottom:0;
+  right:0;
+  position:absolute;
+  padding:5px;
+}
+.mdl-card{
+  float:left;
+  margin:5px;
+}
+

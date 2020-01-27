@@ -7,19 +7,24 @@
           }
 
           function get_user_details() {
-               return $this->db->select('*')
-                              ->where('userId',1)
+               return $this->db->select('userId,userName,fullName,email,company,designation')
+                              ->where('userId',29)
                               ->get('tbluser')
-                              ->result();
+                              ->result_array();
+
           }
 
+          function get_profile(){
+               var_dump($this->db->select('photo')->where('userId',29)->get('tbluser')->result_array());
+          }
+          
           function update_user_details($user) {
-              $this->db->where('userId',1)
+              $this->db->where('userId',29)
                          ->update('tbluser',$user); 
           }
 
           function get_ques_details() {
-               return $this->db->where('userId',1)
+               return $this->db->where('userId',29)
                          ->get('tblquestion')
                          ->result_array();
           }
@@ -83,7 +88,7 @@
           }
 
           function get_ans_details() {
-               return $this->db->where('userId',1)
+               return $this->db->where('userId',26)
                          ->get('tblanswer')
                          ->result_array();     
           }
@@ -98,7 +103,10 @@
           }
 
           function get_comment_details() {
-               $temp = $this->db->where('userId',1)
+               $commentQ = [];
+               $commentA = [];
+
+               $temp = $this->db->where('userId',29)
                          ->get('tblcomment')
                          ->result_array(); 
 
@@ -107,7 +115,7 @@
                          $commentQ = $this->db->from('tblquestion q')
                                         ->select('c.description, c.updatedTime, c.quesId, c.ansId, q.title')
                                         ->join('tblcomment c','q.quesId = c.quesId')
-                                        ->where('c.userId',1)
+                                        ->where('c.userId',29)
                                         ->get()
                                         ->result_array(); 
                     }
@@ -115,7 +123,7 @@
                          $commentA = $this->db->from('tblanswer a')
                                         ->select('c.description, c.updatedTime, c.quesId, c.ansId, a.answer')
                                         ->join('tblcomment c','a.ansId = c.ansId')
-                                        ->where('c.userId',1)
+                                        ->where('c.userId',29)
                                         ->get()
                                         ->result_array(); 
                     }
@@ -123,6 +131,14 @@
                $comment = array_merge($commentQ, $commentA);
 
                return $comment;
+          }
+
+          
+          function uploadProfile($data){
+
+                    $this->db->where('userId',29);
+               $this->db->update('tbluser', array('photo' =>file_get_contents($data)));
+
           }
      }
 ?>

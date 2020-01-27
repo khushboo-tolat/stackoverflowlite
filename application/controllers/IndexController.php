@@ -38,7 +38,7 @@
             echo "false";
         }
     }
-
+    
     public function test()
     {
         // $this->session->sess_destroy();
@@ -47,7 +47,7 @@
         var_dump($this->session->all_userdata());
     }
 
-    public function forgotpassword(){
+    public function forgotPassword(){
         echo "reached at forgot password page";
     }
 
