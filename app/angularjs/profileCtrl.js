@@ -67,8 +67,8 @@ profile.controller('profileCtrl', ['$scope', '$http', function ($scope, $http) {
      $scope.checkReportUser = function() {
           $http({
 			method:"POST",
-			url: 'http://localhost/stackoverflowlite/index.php/Profile/checkReportedUser',
-			data:{userId: $scope.user.userId, reportedId: 2},
+			url: 'http://localhost/stackoverflowlite/index.php/Report/checkReportedUser',
+			data:{userId: $scope.user.userId},
 		}).then(function successCallBack(response){		
                $scope.checkReportedUser = response.data;
           
@@ -85,13 +85,13 @@ profile.controller('profileCtrl', ['$scope', '$http', function ($scope, $http) {
           });
      }
 
-     $scope.reportUser = function(userId, reporterId) {
+     $scope.reportUser = function(userId) {
           if($scope.checkReportedUser > 0) {
                $http({
                     method: "POST",
-                    url: "http://localhost/stackoverflowlite/index.php/Profile/delete_report_user",
+                    url: "http://localhost/stackoverflowlite/index.php/Report/delete_report_user",
                     dataType: 'json',
-                    data: {userId: userId, reportedId: reporterId},
+                    data: {userId: userId},
                     headers: { "Content-Type": "application/json" }
                }).then(function successCallBack(response){
                     $scope.checkReportUser();  
@@ -100,9 +100,9 @@ profile.controller('profileCtrl', ['$scope', '$http', function ($scope, $http) {
           else {
                $http({
                     method: "POST",
-                    url: "http://localhost/stackoverflowlite/index.php/Profile/insert_report_user",
+                    url: "http://localhost/stackoverflowlite/index.php/Report/insert_report_user",
                     dataType: 'json',
-                    data: {userId: userId, reportedId: reporterId},
+                    data: {userId: userId},
                     headers: { "Content-Type": "application/json" }
                }).then(function successCallBack(response){
                     $scope.checkReportUser();  

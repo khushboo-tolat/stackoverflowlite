@@ -8,7 +8,7 @@
 
           function get_user_details() {
                return $this->db->select('*')
-                              ->where('userId',1)
+                              ->where('userId',4)
                               ->get('tbluser')
                               ->result();
           }
@@ -16,22 +16,6 @@
           function update_user_details($user) {
               $this->db->where('userId',1)
                          ->update('tbluser',$user); 
-          }
-
-          function check_report_details($report) {
-               $this->db->where($report);
-		     $user=$this->db->get('tblreport');
-		
-		     return $user->num_rows();
-          }
-
-          function insert_report_details($report) {
-               $this->db->insert('tblreport', $report);
-          }
-
-          function delete_report_details($report) {
-               $this->db->where($report)
-                         ->delete('tblreport');
           }
 
           function get_ques_details() {

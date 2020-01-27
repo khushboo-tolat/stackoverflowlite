@@ -30,40 +30,6 @@
                $this->Profile_m->update_user_details($user);
           }
 
-          function checkReportedUser() {
-               $request = json_decode(file_get_contents('php://input'), TRUE);
-               
-               $report = [
-                    'userId' => $request['userId'],
-                    'reportedId' => $request['reportedId']
-               ];
-
-               $response = $this->Profile_m->check_report_details($report);
-               echo $response;
-          }
-
-          function insert_report_user() {
-               $request = json_decode(file_get_contents('php://input'), TRUE);
-               
-               $report=[
-                    "userId" => $request["userId"],
-                    "reportedId" => $request["reportedId"],
-               ];
-
-               $this->Profile_m->insert_report_details($report);
-          }
-
-          function delete_report_user() {
-               $request = json_decode(file_get_contents('php://input'), TRUE);
-               
-               $report=[
-                    "userId" => $request["userId"],
-                    "reportedId" => $request["reportedId"],
-               ];
-
-               $this->Profile_m->delete_report_details($report);
-          }
-
           function get_ques() {
                $ques = $this->Profile_m->get_ques_details();
 

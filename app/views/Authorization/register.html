@@ -1,0 +1,60 @@
+<div id="login-page" class="row">
+    <div class="col s15 z-depth-4 card-panel">
+		<form name="regForm" class="login-form" ng-controller="regController">
+			<div class="row">
+		  		<div class="input-field col s12 center">
+		        	<h4>Register</h4>
+		        	<p class="center">Join to our community now !</p>
+		  		</div>
+			</div>
+			
+		    <div class="row margin">
+		    	<div class="input-field col s12">
+		            <i class="mdi-social-person-outline prefix"></i>
+		            <input id="fullname" type="text" ng-model="fullName">
+		            <label for="fullname" class="center-align">Full Name</label>
+		      	</div>
+		    </div>
+		    <div class="row margin">
+		    	<div class="input-field col s12" >
+		            <i class="mdi-social-person-outline prefix"></i>
+		            <input id="username" type="text" ng-model="userName"  ng-blur="checkUsername()">
+					<label for="username" class="center-align" >Username</label>
+					<span style="color:red; margin-left: 20%;"  ng-show="isvalid">Username is already available..!	</span>
+		      	</div>
+		    </div>
+			<div class="row margin">
+		      <div class="input-field col s12">
+		        <i class="mdi-communication-email prefix"></i>
+		        <input id="email" type="email" ng-model="email" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" ng-blur="checkEmail()" >
+		        <label for="email" class="center-align">Email</label>
+		        <span style="color:red; margin-left: 20%;"  ng-show="emailvalid">Email is already available..!	</span>
+		      </div>
+		    </div>
+		    <div class="row margin">
+		      <div class="input-field col s12">
+		        <i class="mdi-action-lock-outline prefix"></i>
+		        <input id="password" type="password" ng-model="password" >
+		        <label for="password">Password</label>
+		      </div>
+		    </div>
+		    <div class="row margin">
+		      <div class="input-field col s12">
+		        <i class="mdi-action-lock-outline prefix"></i>
+		        <input id="confirmPassword" ng-model="confirmPassword" type="password">
+		        <label for="password">Confirm Password</label>
+		      </div>
+		    </div>
+		    <div class="row">
+		      <div class="input-field col s12">
+		      	<button id="regbutton" type="submit" class="btn waves-effect waves-light col s12" ng-click="formSubmit()">
+		      		Register
+		      	</button>
+		      </div>
+		      <div class="input-field col s12">
+		        <p class="margin center medium-small sign-up">Already have an account? <a ui-sref="login">Login</a></p>
+		      </div>
+		    </div>
+		</form>
+	</div>
+</div>

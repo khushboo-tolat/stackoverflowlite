@@ -1,8 +1,8 @@
 var routeApp = angular.module("routeApp", ['ui.router']);
 
-routeApp.config(['$stateProvider','$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
+routeApp.config(function($stateProvider, $urlRouterProvider) {
      $urlRouterProvider.otherwise("/Profile");
-
+     
      $stateProvider
      .state("QuesList", {
           url: "/Timeline",
@@ -21,7 +21,7 @@ routeApp.config(['$stateProvider','$urlRouterProvider', function($stateProvider,
      })
      .state("Profile", {
           url: "/Profile",
-          templateUrl: "http://localhost/stackoverflowlite/app/views/profile.html",
-          controller: "profileCtrl",
-     });
-}]);
+          templateUrl: "http://localhost/stackoverflowlite/app/view/profile.html",
+          controller: "profileCtrl"
+     })
+});
