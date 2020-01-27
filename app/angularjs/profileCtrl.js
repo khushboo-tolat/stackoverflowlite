@@ -2,6 +2,7 @@ var profile = angular.module('routeApp');
 
 profile.controller('profileCtrl', ['$scope', '$http', function ($scope, $http) {
      $scope.user = {};
+     $scope.item = false;
      var username = "Hello";
      $scope.getUsers = function(){
       $http({
@@ -15,6 +16,15 @@ profile.controller('profileCtrl', ['$scope', '$http', function ($scope, $http) {
       }); 
      }
      $scope.getUsers();
+
+     $scope.change = function() {
+          if($scope.item){
+               $scope.item = false;
+          }
+          else{
+               $scope.item = true;  
+          }
+     }
 
      $scope.isvalid=false;
      $scope.checkUsername=function(){		

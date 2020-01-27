@@ -8,7 +8,7 @@
 
           function get_user_details() {
                return $this->db->select('*')
-                              ->where('userId',4)
+                              ->where('userId',1)
                               ->get('tbluser')
                               ->result();
           }
