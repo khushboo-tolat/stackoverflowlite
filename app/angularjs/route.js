@@ -74,8 +74,8 @@ routeApp.config(function($stateProvider, $urlRouterProvider) {
      url:"/alltags",
      views: {
        "main":{
-           templateUrl : 'http://localhost/stackoverflowlite/app/views/tpage.html'
-           //controller:'tagCtrl'
+           templateUrl : 'http://localhost/stackoverflowlite/app/views/tpage.html',
+           controller:'tagCtrl'
          }
      }
    });
@@ -218,9 +218,10 @@ routeApp.controller("quesdetailCtrl",['$scope','$http','$stateParams',function($
  routeApp.controller('tagCtrl',['$scope','$http',function($scope,$http){
    $http({
     method: 'get',
-    url: 'http://localhost/stackoverflowlite/index.php/Tagpage/returnalltags'
+    url: '/stackoverflowlite/index.php/Tagpage/returnalltags'
    }).then(function successCallback(response) {
      // Assign response to users object
+     console.log("Tag page");
      $scope.content = response.data;
    });
  }]);

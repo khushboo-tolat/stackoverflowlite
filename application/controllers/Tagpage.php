@@ -14,7 +14,7 @@ class Tagpage extends CI_Controller{
     echo $str_json_format;
   }
   public function index(){
-    $this->load->view('tpage.html');
+  //  $this->load->view('tpage.html');
   }
 }
  ?>
