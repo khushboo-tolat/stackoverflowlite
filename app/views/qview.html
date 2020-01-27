@@ -20,31 +20,29 @@
     </div>
 </div>
  -->
-<div class="qtitle Quesheading" style="margin-top: 2rem">
-        
+<div class="qtitle Quesheading">
+        <i class="material-icons flag-icon" style="float: inline-end;">flag</i>
       <b style="padding-left: 20px;/*! padding-top: 20rem; */">Questions List</b>
 
     <div class="pos" style="margin-right: 25rem; margin-top: 1rem;">
         <button class="mdc-button--outlined askBtn" onClick="postQuestion()" >Ask Question</button>
       </div>
     </div>
-  
       </div>
 <div ng-repeat="c in content" class="display-section" style="width: 70%;">
-  
-      <table width="100%">
+        <table width="100%">
            <tr>
                 <td class="table-row" rowspan="2" style="text-align: center;">
                     {{ c.v }}
-                    <p class="subtitle">Votes</p> 
+                    <p class="subtitle">Votes</p>
                 </td>
                 <td class="table-row" rowspan="2" style="text-align: center;">
                      <!-- {{ q.ans_cnt }} -->0
-                     <p class="subtitle">Answers</p> 
+                     <p class="subtitle">Answers</p>
                 </td>
                 <td class="table-row" rowspan="2" style="text-align: center;">
                      {{ c.views }}
-                     <p class="subtitle">Views</p> 
+                     <p class="subtitle">Views</p>
                 </td>
                 <td class="table-row" width="60%"><a href="#" ng-click="incviews(c.qId)" ui-sref="QuesView({ qid: c.qId })" style="text-decoration: none;">{{ c.title }}</a></td>
                 <td rowspan="2">
@@ -56,6 +54,6 @@
                       <a ui-sref="tag({ tname: t })" style="text-decoration: none;"><span ng-repeat="t in c.Tagname.split(',')"> <button class="mdc-button--outlined " style="padding: 7px !important;   border-radius: 25px !important; margin-top: 9px !important; margin-right: 10px !important; border:none !important;" ng-click=''>{{ t }} </button></span></a>
                 </td>
            </tr>
-      </table> 
+      </table>
  </div>
  <div sidebar></div>

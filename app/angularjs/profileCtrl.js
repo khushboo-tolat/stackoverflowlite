@@ -6,9 +6,9 @@ profile.controller('headerCtrl',function($scope,$http,$state){
 
           url:'http://localhost/stackoverflowlite/index.php/Timeline/get_session'
       }).then({
-          
+
       });*/
-      
+
     $scope.postQuestion=function($state){
       console.log("bnasdnas");
       $state.go('#postQ');
@@ -57,7 +57,7 @@ profile.controller('profileCtrl', ['$scope', '$http','$stateParams', function ($
               console.log("error",data);
            });
           return;
-          
+
         };
 
 
@@ -93,7 +93,7 @@ profile.controller('profileCtrl', ['$scope', '$http','$stateParams', function ($
      $scope.user = {};
      $scope.item = false;
      var username = "Hello";
-     
+
      $scope.getUsers = function(){
       $http({
        method: 'post',
@@ -102,11 +102,11 @@ profile.controller('profileCtrl', ['$scope', '$http','$stateParams', function ($
        dataType :'json'
 
       }).then(function successCallback(response) {
-        $scope.user = response.data[0]; 
-        $scope.check();   
-        $scope.checkReportUser();  
+        $scope.user = response.data[0];
+        $scope.check();
+        $scope.checkReportUser();
         username = $scope.user.userName;
-      }); 
+      });
      }
      $scope.getUsers();
 
@@ -115,19 +115,19 @@ profile.controller('profileCtrl', ['$scope', '$http','$stateParams', function ($
                $scope.item = false;
           }
           else{
-               $scope.item = true;  
+               $scope.item = true;
           }
      }
 
      $scope.isvalid=false;
-     $scope.checkUsername=function(){		
+     $scope.checkUsername=function(){
 		$http({
 			method:"POST",
 			url: 'http://localhost/stackoverflowlite/index.php/IndexController/checkUsername',
 			data:{username: $scope.user.userName},
 		}).then(function successCallBack(response){
                var temp = document.getElementById("userName").value;
-               if(temp !== username){		
+               if(temp !== username){
                     if(response.data > 0 ){
                          $scope.isvalid=true;
                     }
@@ -136,15 +136,15 @@ profile.controller('profileCtrl', ['$scope', '$http','$stateParams', function ($
                     }
                }
                else{
-                    $scope.isvalid=false;   
+                    $scope.isvalid=false;
                }
 		});
 	};
 
-     $scope.updateUser = function() {   
+     $scope.updateUser = function() {
           if($scope.isvalid==true)
                alert("Please fill valid data first");
-          else{                  
+          else{
                $http({
                     method: "POST",
                     url: "http://localhost/stackoverflowlite/index.php/Profile/update_user",
@@ -158,12 +158,12 @@ profile.controller('profileCtrl', ['$scope', '$http','$stateParams', function ($
      $scope.validUser = false;
      $scope.check = function() {
           if (29 == $scope.user.userId) {
-               $scope.validUser = true; 
+               $scope.validUser = true;
           }
-          else { 
-               $scope.validUser= false; 
+          else {
+               $scope.validUser= false;
           }
-     } 
+     }
 
      $scope.checkReportedUser = 0;
 
@@ -172,19 +172,19 @@ profile.controller('profileCtrl', ['$scope', '$http','$stateParams', function ($
 			method:"POST",
 			url: 'http://localhost/stackoverflowlite/index.php/Report/checkReportedUser',
 			data:{userId: $scope.user.userId},
-		}).then(function successCallBack(response){		
+		}).then(function successCallBack(response){
                $scope.checkReportedUser = response.data;
-          
+
                if($scope.checkReportedUser > 0) {
                     $scope.reportObj = {
                          "color": "red",
                     }
-               }    
+               }
                else{
                     $scope.reportObj = {
                          "color": "gray",
                     }
-               } 
+               }
           });
      }
 
@@ -197,7 +197,7 @@ profile.controller('profileCtrl', ['$scope', '$http','$stateParams', function ($
                     data: {userId: userId},
                     headers: { "Content-Type": "application/json" }
                }).then(function successCallBack(response){
-                    $scope.checkReportUser();  
+                    $scope.checkReportUser();
                });
           }
           else {
@@ -208,7 +208,7 @@ profile.controller('profileCtrl', ['$scope', '$http','$stateParams', function ($
                     data: {userId: userId},
                     headers: { "Content-Type": "application/json" }
                }).then(function successCallBack(response){
-                    $scope.checkReportUser();  
+                    $scope.checkReportUser();
                });
           }
      }
@@ -220,7 +220,7 @@ profile.controller('profileCtrl', ['$scope', '$http','$stateParams', function ($
           }).then(function successCallback(response) {
                $scope.ques = response.data;
                $scope.ques_length = $scope.ques.length;
-          }); 
+          });
      }
      $scope.getUserQues();
 
@@ -231,7 +231,7 @@ profile.controller('profileCtrl', ['$scope', '$http','$stateParams', function ($
           }).then(function successCallback(response) {
                $scope.ans = response.data;
                $scope.ans_length = $scope.ans.length;
-          }); 
+          });
      }
      $scope.getUserAns();
 
@@ -242,10 +242,10 @@ profile.controller('profileCtrl', ['$scope', '$http','$stateParams', function ($
           }).then(function successCallback(response) {
                $scope.comm = response.data;
                $scope.comm_length = $scope.comm.length;
-          }); 
+          });
      }
      $scope.getUserComment();
-     
+
 }]);
 
 // Code for Question upload Page
@@ -268,7 +268,7 @@ profile.controller('postquesCtrl', ['$scope', '$http', function($scope,$http){
       url:'http://localhost/stackoverflowlite/index.php/indexController/insert',
       datatype:'json',
       data:{Title:$scope.title,Body:$scope.bodies,Tags:$scope.tag},
-  
+
     }).then(function(res){
       console.log(res.data);
     });
@@ -313,16 +313,6 @@ profile.controller("comments",['$scope','$state','$window','$http',function($sco
   }
 }]);
 
-
- profile.controller('tagCtrl',['$scope','$http',function($scope,$http){
-   $http({
-    method: 'get',
-    url: '/CodeIgniter/index.php/Tagpage/returnalltags'
-   }).then(function successCallback(response) {
-     // Assign response to users object
-     $scope.content = response.data;
-   });
- }]);
 
  profile.controller('samp',['$scope','$http','$stateParams','$state',function($scope,$http,$stateParams,$state){
    console.log("Ctrl_samp");
@@ -392,7 +382,3 @@ profile.controller('quesCtrl',['$scope','$http','$stateParams', function($scope,
   };
   });
 }]);
-
-
-
-

@@ -43,18 +43,18 @@ routeApp.config(function($stateProvider, $urlRouterProvider) {
      // })
    .state("tag",{
      url:'/tag/:tname',
-    templateUrl : 'http://localhost/stackoverflowlite/app/views/samp.html'
-           //controller:'samp'
+    templateUrl : 'http://localhost/stackoverflowlite/app/views/samp.html',
+           controller:'samp'
    })
    .state("votes",{
      url:'/votes',
-     templateUrl : 'http://localhost/stackoverflowlite/app/views/samp.html'
-           //controller:'samp'
+     templateUrl : 'http://localhost/stackoverflowlite/app/views/samp.html',
+           controller:'samp'
  })
    .state("views",{
      url:'/views',
-    templateUrl : 'http://localhost/stackoverflowlite/app/views/samp.html'
-           //controller:'samp'
+    templateUrl : 'http://localhost/stackoverflowlite/app/views/samp.html',
+           controller:'samp'
    })
    .state("alltags",{
      url:"/alltags",
@@ -73,6 +73,15 @@ routeApp.directive('sidebar',function(){
 
 routeApp.controller("quesdetailCtrl",['$scope','$http','$stateParams',function($scope,$http,$stateParams){
    window.datascope = $scope;
+   $scope.Qcmt=false;
+
+  $scope.show=function(){
+    if($scope.Qcmt)
+      $scope.Qcmt=false;
+    else
+      $scope.Qcmt=true;
+  }
+
    $http({
      method:'post',
      url:'/stackoverflowlite/index.php/Quesdetail',
