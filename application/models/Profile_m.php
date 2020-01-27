@@ -19,7 +19,7 @@
           }
           
           function update_user_details($user) {
-              $this->db->where('userId',1)
+              $this->db->where('userId',26)
                          ->update('tbluser',$user); 
           }
 
@@ -40,7 +40,7 @@
           }
 
           function get_ques_details() {
-               return $this->db->where('userId',1)
+               return $this->db->where('userId',26)
                          ->get('tblquestion')
                          ->result_array();
           }
@@ -78,7 +78,7 @@
                     if($vote[$i]['vote'] == 1){
                          $data = $this->db->select('*')
                                    ->where($where)
-                                   ->where('vote',1)
+                                   ->where('vote',26)
                                    ->get('tblvoting');
                          $up = $data->num_rows();
                     }
@@ -104,7 +104,7 @@
           }
 
           function get_ans_details() {
-               return $this->db->where('userId',1)
+               return $this->db->where('userId',26)
                          ->get('tblanswer')
                          ->result_array();     
           }
@@ -119,7 +119,7 @@
           }
 
           function get_comment_details() {
-               $temp = $this->db->where('userId',1)
+               $temp = $this->db->where('userId',26)
                          ->get('tblcomment')
                          ->result_array(); 
 
@@ -128,7 +128,7 @@
                          $commentQ = $this->db->from('tblquestion q')
                                         ->select('c.description, c.updatedTime, c.quesId, c.ansId, q.title')
                                         ->join('tblcomment c','q.quesId = c.quesId')
-                                        ->where('c.userId',1)
+                                        ->where('c.userId',26)
                                         ->get()
                                         ->result_array(); 
                     }
@@ -136,7 +136,7 @@
                          $commentA = $this->db->from('tblanswer a')
                                         ->select('c.description, c.updatedTime, c.quesId, c.ansId, a.answer')
                                         ->join('tblcomment c','a.ansId = c.ansId')
-                                        ->where('c.userId',1)
+                                        ->where('c.userId',26)
                                         ->get()
                                         ->result_array(); 
                     }

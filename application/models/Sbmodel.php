@@ -12,7 +12,7 @@ class Sbmodel extends CI_Model {
       $this->db->select('tagName');
       $q= $this->db->get('tbltag');
       $query=$q->result_array();
-      $random_keys=array_rand($query,10);
+      $random_keys=array_rand($query,5);
       $random_arr = array();
       foreach ($random_keys as $k => $v) {
         // code...
