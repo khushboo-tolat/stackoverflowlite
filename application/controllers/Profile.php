@@ -68,8 +68,7 @@
                     if($comment[$i]['ansId'] == NULL){
                          $comment[$i]["type"] = "Question";
                     }
-                    elseif($comment[$i]['quesId'] == NULL){
-                         $comment[$i]["title"] = $comment[$i]["answer"];
+                    else{
                          $comment[$i]["type"] = "Answer";
                     }
                }

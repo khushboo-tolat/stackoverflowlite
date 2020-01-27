@@ -8,18 +8,9 @@
 
 
           function get_user_details($id) {
-               return $this->db->select('*')
-                              ->where('userId',$id)
-/*=======
-          function get_user_details() {
                return $this->db->select('userId,userName,fullName,email,company,designation')
-<<<<<<< HEAD
-                              ->where('userId',26)
->>>>>>> 310064dcd47d10d20d9a39af706158ee0b57543b*/
-/*=======
-                              ->where('userId',29)
->>>>>>> e9e005a553253b51522ab96b754117583bca7040
-    */                          ->get('tbluser')
+                              ->where('userId',$id)
+                              ->get('tbluser')
                               ->result_array();
 
           }
@@ -98,7 +89,7 @@
           }
 
           function get_ans_details() {
-               return $this->db->where('userId',26)
+               return $this->db->where('userId',29)
                          ->get('tblanswer')
                          ->result_array();     
           }
@@ -131,8 +122,9 @@
                     }
                     elseif($temp[$i]['quesId'] == NULL){
                          $commentA = $this->db->from('tblanswer a')
-                                        ->select('c.description, c.updatedTime, c.quesId, c.ansId, a.answer')
+                                        ->select('c.description, c.updatedTime, c.quesId, c.ansId, a.answer, q.quesId, q.title')
                                         ->join('tblcomment c','a.ansId = c.ansId')
+                                        ->join('tblquestion q','a.quesId = q.quesId')
                                         ->where('c.userId',29)
                                         ->get()
                                         ->result_array(); 
