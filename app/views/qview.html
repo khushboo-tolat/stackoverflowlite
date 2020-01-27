@@ -21,30 +21,31 @@
 </div>
  -->
 
- <div ng-repeat="c in content" class="display-section">
-                    <table width="100%">
-                         <tr>
-                              <td class="table-row" rowspan="2" style="text-align: center;">
-                                  {{ c.v }}
-                                  <p class="subtitle">Votes</p> 
-                              </td>
-                              <td class="table-row" rowspan="2" style="text-align: center;">
-                                   <!-- {{ q.ans_cnt }} -->0
-                                   <p class="subtitle">Answers</p> 
-                              </td>
-                              <td class="table-row" rowspan="2" style="text-align: center;">
-                                   {{ c.views }}
-                                   <p class="subtitle">Views</p> 
-                              </td>
-                              <td class="table-row" width="60%"><a href="#" ng-click="incviews(c.qId)" ui-sref="QuesView({ qid: c.qId })" style="text-decoration: none;">{{ c.title }}</a></td>
-                              <td rowspan="2">
-                                   {{ c.updatedTime | timeago }}
-                              </td>
-                         </tr>
-                         <tr>
-                              <td class="table-row">
-                                    <a ui-sref="tag({ tname: t })" style="text-decoration: none;"><span ng-repeat="t in c.Tagname.split(',')"> <button class="tag-btn" ng-click=''>{{ t }} </button></span></a>
-                              </td>
-                         </tr>
-                    </table> 
-               </div>
+<div ng-repeat="c in content" class="display-section">
+      <table width="100%">
+           <tr>
+                <td class="table-row" rowspan="2" style="text-align: center;">
+                    {{ c.v }}
+                    <p class="subtitle">Votes</p> 
+                </td>
+                <td class="table-row" rowspan="2" style="text-align: center;">
+                     <!-- {{ q.ans_cnt }} -->0
+                     <p class="subtitle">Answers</p> 
+                </td>
+                <td class="table-row" rowspan="2" style="text-align: center;">
+                     {{ c.views }}
+                     <p class="subtitle">Views</p> 
+                </td>
+                <td class="table-row" width="60%"><a href="#" ng-click="incviews(c.qId)" ui-sref="QuesView({ qid: c.qId })" style="text-decoration: none;">{{ c.title }}</a></td>
+                <td rowspan="2">
+                     {{ c.updatedTime | timeago }}
+                </td>
+           </tr>
+           <tr>
+                <td class="table-row">
+                      <a ui-sref="tag({ tname: t })" style="text-decoration: none;"><span ng-repeat="t in c.Tagname.split(',')"> <button class="tag-btn" ng-click=''>{{ t }} </button></span></a>
+                </td>
+           </tr>
+      </table> 
+ </div>
+ <div sidebar></div>

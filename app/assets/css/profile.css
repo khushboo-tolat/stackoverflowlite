@@ -12,7 +12,7 @@
      height: 200px;
      width: 200px;
      border-radius: 10%;
-     margin-right: 0px;   
+     margin-right: 8rem;   
      cursor: pointer;
 }
 
@@ -119,7 +119,7 @@ input {
   margin: 20px;
   padding: 10px 10px 0px 10px;
   border-top: 1px solid #B5B5B5;
-  width: 75%;
+  width: 70%;
 }
 
 .table-row {
