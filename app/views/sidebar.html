@@ -1,4 +1,4 @@
-<div class="mdc-card my-card" style="float: right;" ng-controller="sbCtrl">
+<div class="mdc-card my-card" style="width:20%;float:right; top:66px; right: 0;position: absolute;" ng-controller="sbCtrl">
   <div>
     <h2>Tags</h2>
     <div class="mdc-chip-set" role="grid">
@@ -15,7 +15,7 @@
     <h2>Filter Questions</h2>
     <div>
       <select class="dropdown dropbtn" ng-change="sortfunction(sortselect)" ng-model="sortselect">
-        <option value="time">Recently Added</option>
+        <option value="time" active>Recently Added</option>
         <option value="views">Most Viewed</option>
         <option value="votes">Most Votes</option>
       </select>

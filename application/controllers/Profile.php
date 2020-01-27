@@ -110,5 +110,22 @@
 
                echo json_encode($comment);     
           }
+          function profileUpload(){
+               $data=json_decode(file_get_contents("php://input"),true);
+               
+               if(!empty($_FILES)){
+                    if($_FILES["file"]["type"] == "image/png" || $_FILES["file"]["type"] == "image/jpg" || $_FILES["file"]["type"] == "image/gif" || $_FILES["file"]["type"] == "image/jpeg"){
+                         if(!$_FILES["file"]["error"] > 0){              
+                              // sprintf('<img src="data:image/png;base64,%s" />', base64_encode($_FILES["file"]["tmp_name"]));     
+                              echo $_FILES["file"]["tmp_name"];   die();
+                              $this->Profile_m->uploadProfile($_FILES["file"]["tmp_name"]);
+                         }
+                    }
+               }
+          }
+
+          function getProfile(){
+               $this->Profile_m->get_profile();
+          }
      }
 ?>
