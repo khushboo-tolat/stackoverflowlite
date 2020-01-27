@@ -14,7 +14,7 @@ $qProvider.errorOnUnhandledRejections(false);
  // }]);
 
 routeApp.config(function($stateProvider, $urlRouterProvider) {
-     $urlRouterProvider.otherwise("QuesView");
+     $urlRouterProvider.otherwise("QuesList");
 
      $stateProvider
      .state("QuesList", {
@@ -25,7 +25,7 @@ routeApp.config(function($stateProvider, $urlRouterProvider) {
      .state("QuesView", {
           url: "/QuesView/:qid",
           templateUrl: "http://localhost/stackoverflowlite/app/views/questionView.html",
-          controller: "quesviewCtrl"
+          //controller: "quesviewCtrl"
      })
      .state("postQ", {
           url: "/postQ",
