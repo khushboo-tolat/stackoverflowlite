@@ -1,6 +1,6 @@
 <div class="mdc-card qcard" ng-controller="quesdetailCtrl">
   	<div class="qtitle">
-      <span><i class="material-icons flag-icon" style="float: inline-end;">flag</i></span>
+      <span ng-click="reportQues(content[0][0]['quesId'],'2')" ng-style="report"><i class="material-icons flag-icon" style="float: inline-end;">flag</i></span>
   		<b>{{ content[0][0]["title"] }}</b>
   	</div>
     <!-- Report left -->
@@ -30,7 +30,7 @@
   		</div>
   	</div>
   	<div class="ansbox " style="margin-left: 7rem !important" ng-show="Qcmt">
-  		<textarea  ng-model="bodies" class="textbox cmt" 
+  		<textarea  ng-model="bodies" class="textbox cmt"
 				  data-post-type-id="1" cols="92" rows="3" placeholder="Write Your Comment Here ...!"></textarea>
 		<button class="mdc-button--outlined cmtpostbtn ansbtn">Upload </button>
 	</div>
@@ -54,7 +54,7 @@
         <!-- Comments for ans -->
   		</div>
   	</div>
-<!--   	<div class="Qbody border">  		
+<!--   	<div class="Qbody border">
   		<div class="vote">
   			<center>
   			<i class="material-icons vote-icon">thumb_up_alt</i>
@@ -71,10 +71,9 @@
  -->
   	<div class="ansHeading">Post Your Answer</div>
   	<div class="ansbox">
-  		<textarea  ck-editor required="true" name="body" ng-model="bodies" class="textbox" 
+  		<textarea  ck-editor required="true" name="body" ng-model="bodies" class="textbox"
 				  data-post-type-id="1" cols="92" rows="15" ></textarea>
 		<button class="mdc-button--outlined ansbtn">Post Answer</button>
   	</div>
 </div>
 <div sidebar></div>
-
