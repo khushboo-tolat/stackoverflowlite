@@ -218,7 +218,7 @@ routeApp.controller("quesdetailCtrl",['$scope','$http','$stateParams',function($
  routeApp.controller('tagCtrl',['$scope','$http',function($scope,$http){
    $http({
     method: 'get',
-    url: '/CodeIgniter/index.php/Tagpage/returnalltags'
+    url: 'http://localhost/stackoverflowlite/index.php/Tagpage/returnalltags'
    }).then(function successCallback(response) {
      // Assign response to users object
      $scope.content = response.data;
@@ -295,5 +295,3 @@ routeApp.controller('quesCtrl',['$scope','$http','$stateParams', function($scope
 
 });
 }]);
-
-
