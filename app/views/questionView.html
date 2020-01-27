@@ -1,9 +1,11 @@
 <div class="mdc-card qcard" ng-controller="quesdetailCtrl">
   	<div class="qtitle">
+      <span><i class="material-icons flag-icon" style="float: inline-end;">flag</i></span>
   		<b>{{ content[0][0]["title"] }}</b>
   	</div>
     <!-- Report left -->
   	<div class="qstatus">
+
   		<span class="statusbox"><span class="minTitle">Asked</span> today</span>
 
   		<span class="statusbox"><span class="minTitle">Viewed</span> {{ content[0][0]["views"] }}</span>
