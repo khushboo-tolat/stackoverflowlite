@@ -98,13 +98,8 @@ routeApp.controller("quesdetailCtrl",['$scope','$http','$stateParams',function($
      console.log("js");
      $scope.content=response.data;
      console.log(response.data);
-     $scope.checkreportedQues($stateParams.qid,'2');
+     $scope.checkreportedQues($stateParams.qid,'29');
      var_dump(response.data[1]);
-     // angular.forEach( response.data[1], function(v,k){
-     //   var_dump(v);
-     //    $scope.checkreportedAns(v['ansId'],'2');
-     // });
-
    });
 
 

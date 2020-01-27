@@ -4,8 +4,6 @@ body {font-family: Arial;}
 .horizontal-header{
 	background-color: #d8cdcd;
 	height: 60px;
-	margin: -8px -8px 0px -8px;
-
 }
 .image-logo{
 	margin-top: 2px;
@@ -75,7 +73,6 @@ li a.hover{
      min-height: 100%;
      width: 20em;
      padding: 1em;
-     margin-right: -8px !important;
 }
 
 .sort {

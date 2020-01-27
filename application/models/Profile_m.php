@@ -88,7 +88,7 @@
           }
 
           function get_ans_details() {
-               return $this->db->where('userId',26)
+               return $this->db->where('userId',29)
                          ->get('tblanswer')
                          ->result_array();     
           }

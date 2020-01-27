@@ -74,7 +74,7 @@
                                    {{ q.views }}
                                    <p class="subtitle">Views</p> 
                               </td>
-                              <td class="table-row" width="60%"><a href="#" style="text-decoration: none;">{{ q.title }}</a></td>
+                              <td class="table-row" width="60%"><a href="#" ui-sref="QuesView({ qid: q.quesId })" style="text-decoration: none;">{{ q.title }}</a></td>
                               <td rowspan="2">
                                    {{ q.updatedTime | timeago }}
                               </td>
@@ -106,7 +106,7 @@
                               </td>
                          </tr>
                          <tr>
-                              <td class="table-row"><a href="#" style="text-decoration: none;">{{ a.ques }}</a></td>
+                              <td class="table-row"><a href="#" ui-sref="QuesView({ qid: a.quesId })" style="text-decoration: none;">{{ a.ques }}</a></td>
                          </tr>
                     </table> 
                </div>
@@ -129,7 +129,7 @@
                               </td>
                          </tr>
                          <tr>
-                              <td class="table-row"><a href="#" style="text-decoration: none;">{{ c.title }}</a></td>
+                              <td class="table-row">Question: <a href="#" style="text-decoration: none;">{{ c.title }}</a></td>
                          </tr>
                     </table> 
                </div>
