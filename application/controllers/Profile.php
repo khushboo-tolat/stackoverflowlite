@@ -9,7 +9,14 @@
           }
 
           function get_user() {
-               $user = $this->Profile_m->get_user_details();
+               $id = json_decode(file_get_contents('php://input'), TRUE);
+
+               if($id['userId']==''){
+                    $user = $this->Profile_m->get_user_details(29);
+               }
+               else{
+               $user = $this->Profile_m->get_user_details($id['userId']);
+               }
                echo json_encode($user);
           }
 

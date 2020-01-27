@@ -13,16 +13,17 @@ profile.controller('headerCtrl',function($scope,$http){
 
 });
 
-profile.controller('profileCtrl', ['$scope', '$http', function ($scope, $http) {
 
-     var profile= document.getElementById("profile");
-       var upload=document.getElementById("imageupload");
-     //   profile.onclick = function(){
-     //        upload.click();
-     //   };
+profile.controller('profileCtrl', ['$scope', '$http','$stateParams', function ($scope, $http,$stateParams) {
+
+     /*var profile= document.getElementById("profile");
+       var upload=document.getElementById("imageupload") ;
+       profile.onclick = function(){
+            upload.click();
+       };
        $scope.form=[];
        $scope.files=[];
-     
+     */
       $scope.uploadedFile=function(element){
           $scope.currentFile = element.files[0];
           var rander=new FileReader();
@@ -85,13 +86,18 @@ profile.controller('profileCtrl', ['$scope', '$http', function ($scope, $http) {
       }
       $scope.getProfile();
 
+
      $scope.user = {};
      $scope.item = false;
      var username = "Hello";
+     
      $scope.getUsers = function(){
       $http({
-       method: 'get',
-       url: 'http://localhost/stackoverflowlite/index.php/Profile/get_user'
+       method: 'post',
+       url: 'http://localhost/stackoverflowlite/index.php/Profile/get_user',
+       data:{userId:$stateParams.uId},
+       dataType :'json'
+
       }).then(function successCallback(response) {
         $scope.user = response.data[0]; 
         $scope.check();   

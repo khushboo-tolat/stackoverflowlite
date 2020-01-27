@@ -33,9 +33,10 @@ routeApp.config(function($stateProvider, $urlRouterProvider) {
           controller: "postquesCtrl"
      })
      .state("Profile", {
-          url: "/Profile",
+          url: "/Profile/:uId",
           templateUrl: "http://localhost/stackoverflowlite/app/views/profile.html",
           controller: "profileCtrl"
+
 
      })
      // .state("qlist"{
@@ -291,6 +292,7 @@ routeApp.controller('quesCtrl',['$scope','$http','$stateParams', function($scope
         console.log(data);
     });
   };
+
 });
 }]);
 

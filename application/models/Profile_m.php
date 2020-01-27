@@ -6,10 +6,20 @@
                parent::__construct();     
           }
 
+
+          function get_user_details($id) {
+               return $this->db->select('*')
+                              ->where('userId',$id)
+/*=======
           function get_user_details() {
                return $this->db->select('userId,userName,fullName,email,company,designation')
+<<<<<<< HEAD
+                              ->where('userId',26)
+>>>>>>> 310064dcd47d10d20d9a39af706158ee0b57543b*/
+/*=======
                               ->where('userId',29)
-                              ->get('tbluser')
+>>>>>>> e9e005a553253b51522ab96b754117583bca7040
+    */                          ->get('tbluser')
                               ->result_array();
 
           }
