@@ -108,13 +108,9 @@ li a.hover{
 }
 
 .tagbtn{
-    padding: 7px;
-
-border-radius: 25px;
-
-margin-top: 9px;
-
-margin-right: 10px;
-
-border:none;
+    padding: 7px !important;
+    border-radius: 25px !important;    
+    margin-top: 9px !important;
+    margin-right: 10px !important;
+    border:none !important;
 }
