@@ -36,8 +36,6 @@ routeApp.config(function($stateProvider, $urlRouterProvider) {
           url: "/Profile/:uId",
           templateUrl: "http://localhost/stackoverflowlite/app/views/profile.html",
           controller: "profileCtrl"
-
-
      })
      // .state("qlist"{
      //    url:"/qlist",
@@ -45,39 +43,23 @@ routeApp.config(function($stateProvider, $urlRouterProvider) {
      // })
    .state("tag",{
      url:'/tag/:tname',
-     views: {
-
-           templateUrl : 'http://localhost/stackoverflowlite/app/views/samp.html'
+    templateUrl : 'http://localhost/stackoverflowlite/app/views/samp.html'
            //controller:'samp'
-
-     }
    })
    .state("votes",{
      url:'/votes',
-     views: {
-
-           templateUrl : 'http://localhost/stackoverflowlite/app/views/samp.html'
+     templateUrl : 'http://localhost/stackoverflowlite/app/views/samp.html'
            //controller:'samp'
-
-     }
  })
    .state("views",{
      url:'/views',
-     views: {
-
-           templateUrl : 'http://localhost/stackoverflowlite/app/views/samp.html'
+    templateUrl : 'http://localhost/stackoverflowlite/app/views/samp.html'
            //controller:'samp'
-
-     }
    })
    .state("alltags",{
      url:"/alltags",
-     views: {
-
-           templateUrl : 'http://localhost/stackoverflowlite/app/views/tpage.html',
-           controller:'tagCtrl'
-
-     }
+     templateUrl : 'http://localhost/stackoverflowlite/app/views/tpage.html',
+    controller:'tagCtrl'
    });
 });
 
