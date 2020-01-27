@@ -28,9 +28,9 @@ routeApp.config(function($stateProvider, $urlRouterProvider) {
           controller: "postquesCtrl"
      })
      .state("Profile", {
-          url: "/Profile",
+          url: "/Profile/:uId",
           templateUrl: "http://localhost/stackoverflowlite/app/views/profile.html",
           controller: "profileCtrl"
          
-     })
+     });
 });

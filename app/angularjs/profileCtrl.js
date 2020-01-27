@@ -13,13 +13,17 @@ profile.controller('headerCtrl',function($scope,$http){
 
 });
 
-profile.controller('profileCtrl', ['$scope', '$http', function ($scope, $http) {
+profile.controller('profileCtrl', ['$scope', '$http','$stateParams', function ($scope, $http,$stateParams) {
      $scope.user = {};
      var username = "Hello";
+     
      $scope.getUsers = function(){
       $http({
-       method: 'get',
-       url: 'http://localhost/stackoverflowlite/index.php/Profile/get_user'
+       method: 'post',
+       url: 'http://localhost/stackoverflowlite/index.php/Profile/get_user',
+       data:{userId:$stateParams.uId},
+       dataType :'json'
+
       }).then(function successCallback(response) {
         $scope.user = response.data[0]; 
         $scope.check();   

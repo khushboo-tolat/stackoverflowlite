@@ -1,10 +1,10 @@
-<div ng-controller="profileCtrl as main">
+<div ng-controller="profileCtrl">
      <div class="mdc-card profile-up" ng-init="item = 0">
           <div ng-show="item == 0">
-               <span ng-if="!validUser">
+               <span ng-if="validUser">
                     <a href="" ng-style="reportObj"><i class="material-icons md-24 flag" ng-click="reportUser($eval(user.userId), 2)">flag</i></a>
                </span>
-               <span ng-if="validUser">
+               <span ng-if="!validUser">
                     <a href="" style="color: black"><i class="material-icons md-24 edit" ng-click="item = 1">edit</i></a>    
                </span>
           </div>

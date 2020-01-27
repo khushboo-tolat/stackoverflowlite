@@ -6,9 +6,9 @@
                parent::__construct();     
           }
 
-          function get_user_details() {
+          function get_user_details($id) {
                return $this->db->select('*')
-                              ->where('userId',1)
+                              ->where('userId',$id)
                               ->get('tbluser')
                               ->result();
           }
