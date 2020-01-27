@@ -73,6 +73,15 @@ routeApp.directive('sidebar',function(){
 
 routeApp.controller("quesdetailCtrl",['$scope','$http','$stateParams',function($scope,$http,$stateParams){
    window.datascope = $scope;
+   $scope.Qcmt=false;
+
+  $scope.show=function(){
+    if($scope.Qcmt)
+      $scope.Qcmt=false;
+    else
+      $scope.Qcmt=true;
+  }
+
    $http({
      method:'post',
      url:'/stackoverflowlite/index.php/Quesdetail',
