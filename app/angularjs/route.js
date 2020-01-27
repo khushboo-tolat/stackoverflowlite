@@ -292,4 +292,6 @@ routeApp.controller('quesCtrl',['$scope','$http','$stateParams', function($scope
     });
   };
 });
-  }]);
+}]);
+
+
