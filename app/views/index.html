@@ -10,6 +10,7 @@
           <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
           <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
           <script src="//unpkg.com/@uirouter/angularjs/release/angular-ui-router.min.js"></script>
+          
 
           <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
           <script src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
@@ -19,10 +20,10 @@
 
           <!-- Personal JS Files  -->
           <script src="http://localhost/stackoverflowlite/app/angularjs/route.js"></script>
+          <script src="http://localhost/stackoverflowlite/app/angularjs/relativeTimeFilter.js"></script>
           <script src="http://localhost/stackoverflowlite/app/angularjs/profileCtrl.js"></script>
-          <script src="http://localhost/stackoverflowlite/app/angularjs/relativeTime.js"></script>
           <script srs="http://localhost/stackoverflowlite/app/angularjs/QuesController.js"></script>
-          <!-- <script srs="http://localhost/stackoverflowlite/app/angularjs/index.js"></script> -->
+
 
           <!-- Personal CSS Files -->
           <link rel="stylesheet" href="http://localhost/stackoverflowlite/app/assets/css/profile.css">
@@ -87,7 +88,7 @@
         </span>
       </div>
     </div>
-    <div style="padding-top: 5px;"><a href="#" style="float: right; text-decoration: none;">View More...</a></div>
+    <div style="padding-top: 5px;"><a href="#" ui-sref="alltags()" style="float: right; text-decoration: none;">View More...</a></div>
   </div>
   <div class="sort">
     <h2>Filter Questions</h2>
@@ -101,9 +102,6 @@
     </div>
   </div>
 </div>
-
-
-
                <div ui-view>
 
                </div>

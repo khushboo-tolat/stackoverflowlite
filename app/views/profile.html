@@ -1,28 +1,30 @@
 <div ng-controller="profileCtrl">
-     <div class="mdc-card profile-up" ng-init="item = 0">
-          <div ng-show="item == 0">
-               <span ng-if="validUser">
-                    <a href="" ng-style="reportObj"><i class="material-icons md-24 flag" ng-click="reportUser($eval(user.userId), 2)">flag</i></a>
-               </span>
+
+     <div class="mdc-card profile-up">
+          <div ng-show="!item">
                <span ng-if="!validUser">
-                    <a href="" style="color: black"><i class="material-icons md-24 edit" ng-click="item = 1">edit</i></a>    
+                    <i class="material-icons md-24 flag" ng-style="reportObj" ng-click="reportUser(user.userId)">flag</i>
+               </span>
+               <span ng-if="validUser">
+                    <i class="material-icons md-24 edit" ng-click="change()">edit</i>
+
                </span>
           </div>
-          <div ng-show="item == 1" ng-click="item = 0">
+          <div ng-show="item" ng-click="change()">
                <button class="cancel-btn">Cancel</button>
                <button class="update-btn" ng-click="updateUser()" ng-disabled="formValidate.$invalid || isvalid" id="update">Update</button>
           </div>
           <table>
                <tr>
                     <td><img src="http://localhost/stackoverflowlite/app/assets/images/default.png" class="profile-img"></td>
-                    <td class="profile-content" ng-show="item == 0">
+                    <td class="profile-content" ng-show="!item">
                          <div class="full-name">{{ user.fullName }}</div>
                          <div><span class="span">Username:</span> {{ user.userName }}</div>
                          <div><span class="span">EmailID:</span> {{ user.email }}</div>
                          <div><span class="span">Company:</span> <span ng-if="user.company">{{ user.company }}</span> <span ng-if="!user.company"> Add your company name </span></div>
                          <div><span class="span">Designation:</span> <span ng-if="user.designation">{{ user.designation }}</span> <span ng-if="!user.designation"> Add your designation </span></div>
                     </td>
-                    <td class="profile-content" ng-show="item == 1">
+                    <td class="profile-content" ng-show="item">
                          <form name="formValidate">
                               <input type="text" name="fullName" ng-model="user.fullName" ng-minlength="5" required><br>
                               <p ng-show="formValidate.fullName.$error.required" style="color: red;"> Name is required. </p>
@@ -114,10 +116,10 @@
              
              <div id="Comment" class="tabcontent">
                <h3>Comments</h3>
-               <div ng-if="!comment_length">
+               <div ng-if="!comm_length">
                     You have not commented on any question OR answer yet!!
                </div>
-               <div ng-repeat="c in comment" class="display-section">
+               <div ng-repeat="c in comm" class="display-section">
                     <table width="100%">
                          <tr>
                               <td  rowspan="2" class="table-row subtitle" style="text-align: center;"width="10%">
