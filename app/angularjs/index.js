@@ -1,102 +1,73 @@
-var routeApp = angular.module("routeApp", ['ui.router']);
+var app=angular.module('routeApp');
 
-/*routeApp.run(function($rootScope){
-     $rootScope.islogin = false;
-    $rootScope.success =false;
+ app.config(['$qProvider', function ($qProvider) {
+ $qProvider.errorOnUnhandledRejections(false);
+ }]);
 
-})*/
-// routeApp.config(['$qProvider', function ($qProvider) {
-// $qProvider.errorOnUnhandledRejections(false);
-// }]);
+ // app.config(function($stateProvider,$urlRouterProvider){
+ //   $urlRouterProvider.otherwise("/qlist");
+ //   $stateProvider
+ //   .state("qlist",{
+ //     url:'/qlist',
+ //     views: {
+ //         "main":{
+ //           templateUrl : 'http://localhost/stackoverflowliteproject/app/qview.html'
+ //           //controller : 'quesCtrl'
+ //         }
+ //     }
+ //   })
+ //   .state("tag",{
+ //     url:'/tag/:tname',
+ //     views: {
+ //       "main":{
+ //           templateUrl : 'http://localhost/stackoverflowliteproject/app/samp.html'
+ //           //controller:'samp'
+ //         }
+ //     }
+ //   })
+ //   .state("votes",{
+ //     url:'/votes',
+ //     views: {
+ //       "main":{
+ //           templateUrl : 'http://localhost/stackoverflowliteproject/app/samp.html'
+ //           //controller:'samp'
+ //         }
+ //     }
+ // })
+ //   .state("views",{
+ //     url:'/views',
+ //     views: {
+ //       "main":{
+ //           templateUrl : 'http://localhost/stackoverflowliteproject/app/samp.html'
+ //           //controller:'samp'
+ //         }
+ //     }
+ //   })
+ //   .state("alltags",{
+ //     url:"/alltags",
+ //     views: {
+ //       "main":{
+ //           templateUrl : 'http://localhost/stackoverflowliteproject/app/tpage.html'
+ //           //controller:'tagCtrl'
+ //         }
+ //     }
+ //   })
+ //   .state("quesdetail",{
+ //     url:"/quesdetail/:qid",
+ //     views:{
+ //       "main":{
+ //         templateUrl : 'http://localhost/stackoverflowliteproject/app/quesdetail.html'
+ //         //controller: 'quesdetailCtrl'
+ //       }
+ //     }
+ //   });
+ // });
 
- // routeApp.config(['$qProvider', function ($qProvider) {
- // $qProvider.errorOnUnhandledRejections(false);
- // }]);
-
-routeApp.config(function($stateProvider, $urlRouterProvider) {
-     $urlRouterProvider.otherwise("Profile");
-
-     $stateProvider
-     .state("QuesList", {
-          url: "/QuesList",
-          templateUrl: "http://localhost/stackoverflowlite/app/views/qview.html",
-          controller: "quesCtrl"
-     })
-     .state("QuesView", {
-          url: "/QuesView",
-          templateUrl: "http://localhost/stackoverflowlite/app/views/questionView.html",
-          //controller: "quesviewCtrl"
-     })
-     .state("postQ", {
-          url: "/postQ",
-          templateUrl: "http://localhost/stackoverflowlite/app/views/postquestion.html",
-          controller: "postquesCtrl"
-     })
-     .state("Profile", {
-          url: "/Profile",
-          templateUrl: "http://localhost/stackoverflowlite/app/views/profile.html",
-          controller: "profileCtrl"
-
-     })
-     .state("qlist",{
-     url:'/qlist',
-     views: {
-         "main":{
-           templateUrl : 'http://localhost/stackoverflowlite/app/qview.html'
-           //controller : 'quesCtrl'
-         }
-     }
-   })
-   .state("tag",{
-     url:'/tag/:tname',
-     views: {
-       "main":{
-           templateUrl : 'http://localhost/stackoverflowlite/app/samp.html'
-           //controller:'samp'
-         }
-     }
-   })
-   .state("votes",{
-     url:'/votes',
-     views: {
-       "main":{
-           templateUrl : 'http://localhost/stackoverflowlite/app/samp.html'
-           //controller:'samp'
-         }
-     }
- })
-   .state("views",{
-     url:'/views',
-     views: {
-       "main":{
-           templateUrl : 'http://localhost/stackoverflowlite/app/samp.html'
-           //controller:'samp'
-         }
-     }
-   })
-   .state("alltags",{
-     url:"/alltags",
-     views: {
-       "main":{
-           templateUrl : 'http://localhost/stackoverflowlite/app/tpage.html'
-           //controller:'tagCtrl'
-         }
-     }
-   });
-});
-
-routeApp.directive('sidebar',function(){
-     return {
-          templateUrl:'http://localhost/stackoverflowlite/app/views/sidebar.html',
-          controller:'sbCtrl'
-     };
-});
-
-routeApp.controller("quesdetailCtrl",['$scope','$http','$stateParams',function($scope,$http,$stateParams){
+ app.controller("quesdetailCtrl",['$scope','$http','$stateParams',function($scope,$http,$stateParams){
    window.datascope = $scope;
    $http({
      method:'post',
-     url:'/stackoverflowlite/index.php/Quesdetail',
+     url:'/stackoverflowliteproject/index.php/Quesdetail',
      data: {qid: $stateParams.qid}
    }).then(function(response){
      console.log("js");
@@ -114,7 +85,7 @@ routeApp.controller("quesdetailCtrl",['$scope','$http','$stateParams',function($
    $scope.checkreportedQues=function(param,reporterId){
      $http({
           method: "POST",
-          url: "http://localhost/stackoverflowlite/index.php/Report/checkreportedQues",
+          url: "http://localhost/stackoverflowliteproject/index.php/Report/checkreportedQues",
           dataType: 'json',
           data: {quesId: param, reportedId: reporterId},
           headers: { "Content-Type": "application/json" }
@@ -135,7 +106,7 @@ routeApp.controller("quesdetailCtrl",['$scope','$http','$stateParams',function($
      if($scope.reportedques!=0){
        $http({
             method: "POST",
-            url: "http://localhost/stackoverflowlite/index.php/Report/delete_report_ques",
+            url: "http://localhost/stackoverflowliteproject/index.php/Report/delete_report_ques",
             dataType: 'json',
             data: {quesId: param, reportedId: reporterId},
             headers: { "Content-Type": "application/json" }
@@ -147,7 +118,7 @@ routeApp.controller("quesdetailCtrl",['$scope','$http','$stateParams',function($
      else {
        $http({
             method: "POST",
-            url: "http://localhost/stackoverflowlite/index.php/Report/insert_report_ques",
+            url: "http://localhost/stackoverflowliteproject/index.php/Report/insert_report_ques",
             dataType: 'json',
             data: {quesId: param, reportedId: reporterId},
             headers: { "Content-Type": "application/json" }
@@ -161,7 +132,7 @@ routeApp.controller("quesdetailCtrl",['$scope','$http','$stateParams',function($
    $scope.checkreportedAns=function(param,reporterId){
      $http({
           method: "POST",
-          url: "http://localhost/stackoverflowlite/index.php/Report/checkreportedAns",
+          url: "http://localhost/stackoverflowliteproject/index.php/Report/checkreportedAns",
           dataType: 'json',
           data: {ansId: param, reportedId: reporterId},
           headers: { "Content-Type": "application/json" }
@@ -185,7 +156,7 @@ routeApp.controller("quesdetailCtrl",['$scope','$http','$stateParams',function($
        angular.element('#reportans-'+param).css('color', 'grey');
        $http({
             method: "POST",
-            url: "http://localhost/stackoverflowlite/index.php/Report/delete_report_ans",
+            url: "http://localhost/stackoverflowliteproject/index.php/Report/delete_report_ans",
             dataType: 'json',
             data: {ansId: param, reportedId: reporterId},
             headers: { "Content-Type": "application/json" }
@@ -204,7 +175,7 @@ routeApp.controller("quesdetailCtrl",['$scope','$http','$stateParams',function($
 
        $http({
             method: "POST",
-            url: "http://localhost/stackoverflowlite/index.php/Report/insert_report_ans",
+            url: "http://localhost/stackoverflowliteproject/index.php/Report/insert_report_ans",
             dataType: 'json',
             data: {ansId: param, reportedId: reporterId},
             headers: { "Content-Type": "application/json" }
@@ -217,7 +188,7 @@ routeApp.controller("quesdetailCtrl",['$scope','$http','$stateParams',function($
    };
  }]);
 
- routeApp.controller('tagCtrl',['$scope','$http',function($scope,$http){
+ app.controller('tagCtrl',['$scope','$http',function($scope,$http){
    $http({
     method: 'get',
     url: '/CodeIgniter/index.php/Tagpage/returnalltags'
@@ -227,14 +198,14 @@ routeApp.controller("quesdetailCtrl",['$scope','$http','$stateParams',function($
    });
  }]);
 
- routeApp.controller('samp',['$scope','$http','$stateParams','$state',function($scope,$http,$stateParams,$state){
+ app.controller('samp',['$scope','$http','$stateParams','$state',function($scope,$http,$stateParams,$state){
    console.log("Ctrl_samp");
    console.log($stateParams);
    console.log($state);
    if($state.current.name=="views"){
      $http({
        method: 'post',
-       url: '/stackoverflowlite/index.php/Quesview/returnquesbyviews',
+       url: '/stackoverflowliteproject/index.php/Quesview/returnquesbyviews',
      }).then( function(response){
        console.log(response);
          $scope.content = response.data;
@@ -243,7 +214,7 @@ routeApp.controller("quesdetailCtrl",['$scope','$http','$stateParams',function($
    else if($state.current.name=="votes"){
      $http({
        method: 'post',
-       url: '/stackoverflowlite/index.php/Quesview/returnquesbyvote',
+       url: '/stackoverflowliteproject/index.php/Quesview/returnquesbyvote',
      }).then( function(response){
          $scope.content = response.data;
      });
@@ -252,7 +223,7 @@ routeApp.controller("quesdetailCtrl",['$scope','$http','$stateParams',function($
      $scope.tname=$stateParams.tname;
     $http({
       method: 'post',
-      url: '/stackoverflowlite/index.php/Quesview/returnquesbytag',
+      url: '/stackoverflowliteproject/index.php/Quesview/returnquesbytag',
       data: {p: $stateParams.tname}
     }).then( function(response){
       console.log(response);
@@ -260,10 +231,10 @@ routeApp.controller("quesdetailCtrl",['$scope','$http','$stateParams',function($
     });
    }
 }]);
-routeApp.controller('sbCtrl',['$scope','$http','$stateParams','$state', function($scope,$http,$stateParams,$state){
+app.controller('sbCtrl',['$scope','$http','$stateParams','$state', function($scope,$http,$stateParams,$state){
   $http({
    method: 'get',
-   url: '/stackoverflowlite/index.php/Sidebar/dataresp'
+   url: '/stackoverflowliteproject/index.php/Sidebar/dataresp'
   }).then(function successCallback(response) {
     $scope.content1 = response.data;
   });
@@ -278,23 +249,20 @@ routeApp.controller('sbCtrl',['$scope','$http','$stateParams','$state', function
     }
   };
 }]);
-
-routeApp.controller('quesCtrl',['$scope','$http','$stateParams', function($scope,$http,$stateParams){
+app.controller('quesCtrl',['$scope','$http','$stateParams', function($scope,$http,$stateParams){
   $http({
    method: 'get',
-   url: '/stackoverflowlite/index.php/Quesview/returnallques'
+   url: '/stackoverflowliteproject/index.php/Quesview/returnallques'
   }).then(function successCallback(response) {
     $scope.content = response.data;
     $scope.incviews=function(par){
     $http({
       method: 'post',
-      url: '/stackoverflowlite/index.php/Quesview/updateview',
+      url: '/stackoverflowliteproject/index.php/Quesview/updateview',
       data: JSON.stringify({p: par})
     }).then( function(response){
         console.log(data);
     });
   };
-});
-  }]);
-
-    
+  });
+}]);
