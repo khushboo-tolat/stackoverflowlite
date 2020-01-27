@@ -1,4 +1,4 @@
-var app=angular.module('routeApp',['ui.router']);
+var app=angular.module('routeApp');
 
  app.config(['$qProvider', function ($qProvider) {
  $qProvider.errorOnUnhandledRejections(false);
