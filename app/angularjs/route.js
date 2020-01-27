@@ -38,15 +38,6 @@ routeApp.config(function($stateProvider, $urlRouterProvider) {
           controller: "profileCtrl"
 
      })
-     .state("qlist",{
-     url:'/qlist',
-     views: {
-         "main":{
-           templateUrl : 'http://localhost/stackoverflowlite/app/qview.html'
-           //controller : 'quesCtrl'
-         }
-     }
-   })
    .state("tag",{
      url:'/tag/:tname',
      views: {
@@ -78,7 +69,7 @@ routeApp.config(function($stateProvider, $urlRouterProvider) {
      url:"/alltags",
      views: {
        "main":{
-           templateUrl : 'http://localhost/stackoverflowlite/app/tpage.html'
+           templateUrl : 'http://localhost/stackoverflowlite/app/views/tpage.html'
            //controller:'tagCtrl'
          }
      }
