@@ -106,3 +106,15 @@ li a.hover{
      padding-bottom: 40px;
      padding-left: 10px;
 }
+
+.tagbtn{
+    padding: 7px;
+
+border-radius: 25px;
+
+margin-top: 9px;
+
+margin-right: 10px;
+
+border:none;
+}

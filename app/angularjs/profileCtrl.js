@@ -1,6 +1,6 @@
 var profile = angular.module('routeApp');
 
-profile.controller('headerCtrl',function($scope,$http){
+profile.controller('headerCtrl',function($scope,$http,$state){
      $scope.islogIn = true;
      /* $http({
 
@@ -9,7 +9,10 @@ profile.controller('headerCtrl',function($scope,$http){
           
       });*/
       
-    
+    $scope.postQuestion=function($state){
+      console.log("bnasdnas");
+      $state.go('#postQ');
+    }
 
 });
 
