@@ -302,12 +302,20 @@ profile.controller("comments",['$scope','$state','$window','$http',function($sco
 
 profile.controller("quesdetailCtrl",['$scope','$http','$stateParams',function($scope,$http,$stateParams){
    window.datascope = $scope;
+   $scope.Qcmt=false;
+
+  $scope.show=function(){
+    if($scope.Qcmt)
+      $scope.Qcmt=false;
+    else
+      $scope.Qcmt=true;
+  }
    $http({
      method:'post',
      url:'/stackoverflowlite/index.php/Quesdetail',
      data: {qid: $stateParams.qid}
    }).then(function(response){
-     console.log("js");
+     // console.log("js");
      $scope.content=response.data;
      console.log(response.data);
      $scope.checkreportedQues($stateParams.qid,'2');

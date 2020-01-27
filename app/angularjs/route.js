@@ -5,9 +5,9 @@ var routeApp = angular.module("routeApp", ['ui.router']);
     $rootScope.success =false;
 
 })*/
-// routeApp.config(['$qProvider', function ($qProvider) {
-// $qProvider.errorOnUnhandledRejections(false);
-// }]);
+routeApp.config(['$qProvider', function ($qProvider) {
+$qProvider.errorOnUnhandledRejections(false);
+}]);
 
  // routeApp.config(['$qProvider', function ($qProvider) {
  // $qProvider.errorOnUnhandledRejections(false);
@@ -23,7 +23,7 @@ routeApp.config(function($stateProvider, $urlRouterProvider) {
           controller: "quesCtrl"
      })
      .state("QuesView", {
-          url: "/QuesView",
+          url: "/QuesView/:qid",
           templateUrl: "http://localhost/stackoverflowlite/app/views/questionView.html",
           //controller: "quesviewCtrl"
      })
