@@ -46,37 +46,37 @@ routeApp.config(function($stateProvider, $urlRouterProvider) {
    .state("tag",{
      url:'/tag/:tname',
      views: {
-       "main":{
+
            templateUrl : 'http://localhost/stackoverflowlite/app/views/samp.html'
            //controller:'samp'
-         }
+
      }
    })
    .state("votes",{
      url:'/votes',
      views: {
-       "main":{
+
            templateUrl : 'http://localhost/stackoverflowlite/app/views/samp.html'
            //controller:'samp'
-         }
+
      }
  })
    .state("views",{
      url:'/views',
      views: {
-       "main":{
+
            templateUrl : 'http://localhost/stackoverflowlite/app/views/samp.html'
            //controller:'samp'
-         }
+
      }
    })
    .state("alltags",{
      url:"/alltags",
      views: {
-       "main":{
+
            templateUrl : 'http://localhost/stackoverflowlite/app/views/tpage.html',
            controller:'tagCtrl'
-         }
+
      }
    });
 });
