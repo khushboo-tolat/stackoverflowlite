@@ -326,8 +326,8 @@ profile.controller("comments",['$scope','$state','$window','$http',function($sco
        method: 'post',
        url: '/stackoverflowlite/index.php/Quesview/returnquesbyviews',
      }).then( function(response){
-       console.log(response);
          $scope.content = response.data;
+         //console.log($scope.content);
      });
    }
    else if($state.current.name=="votes"){

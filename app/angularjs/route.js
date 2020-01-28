@@ -86,13 +86,60 @@ routeApp.directive('sidebar',function(){
 routeApp.controller("quesdetailCtrl",['$scope','$http','$stateParams',function($scope,$http,$stateParams){
    window.datascope = $scope;
    $scope.Qcmt=false;
-
+   $scope.Acmt=false;
+   $scope.showCommAnsbox=function(){
+    if($scope.Acmt)
+      $scope.Acmt=false;
+    else
+      $scope.Acmt=true;
+    console.log($scope.Acmt);
+  };
   $scope.show=function(){
+  
     if($scope.Qcmt)
       $scope.Qcmt=false;
     else
       $scope.Qcmt=true;
-  }
+  };
+  $scope.insertComm=function(param) {
+    $txt=document.getElementById("comm").value;
+    $scope.Qcmt=false;
+    document.getElementById("comm").value="";
+     $http({
+     method:'post',
+     url:'/stackoverflowlite/index.php/Quesdetail/insertComm',
+     data: {comm: $txt, userId: "26", qid: param}
+   })    
+  };
+  $scope.deleteComm=function(param) {
+     $http({
+     method:'post',
+     url:'/stackoverflowlite/index.php/Quesdetail/deleteComm',
+     data: {commentId: param}
+   })    
+  };
+  $scope.vote=function(param,qid) {
+    console.log("In vote");
+    $http({
+     method:'post',
+     url:'/stackoverflowlite/index.php/Quesdetail/vote',
+     data: {quesId: qid, votestatus:param, userId: "26"}
+   }).then(function () {
+     // body...
+     console.log("Success");
+   })
+  };
+    $scope.insertCommAns=function(param) {
+    $txt=document.getElementById("anscomm").value;
+    $scope.Acmt=false;
+    document.getElementById("anscomm").value="";
+     $http({
+     method:'post',
+     url:'/stackoverflowlite/index.php/Quesdetail/insertCommAns',
+     data: {comm: $txt, userId: "26", ansid: param}
+   })    
+  };
+
 
    $http({
      method:'post',

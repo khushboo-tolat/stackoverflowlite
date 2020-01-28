@@ -7,6 +7,22 @@ class Quesdetailmodel extends CI_Model {
         //call model constructor
         parent::__construct();
     }
+    public function insertComm($comment)
+    {
+      # code...
+      $this->db->insert('tblcomment', $comment);
+    }
+    public function deleteComm($comment)
+    {
+      # code...
+      $this->db->where($comment)
+                         ->delete('tblcomment');
+    }
+    public function insertvote($voting)
+    {
+      # code...
+      $this->db->insert('tblvoting', $voting);
+    }
     public function fetchdetails($qid){
       $this->db->select("tblquestion.quesId,title,question,tblquestion.userId,fullName,views,tblquestion.updatedTime,COUNT(vote) as v");
       $this->db->from("tblquestion");
@@ -35,10 +51,10 @@ class Quesdetailmodel extends CI_Model {
     }
     public function fetchcommentsforques($qid){
       //echo $qid;
-      $this->db->select("tblcomment.quesId,tblcomment.ansId,description,tbluser.userId,fullName,updatedTime");
+      $this->db->select("tblcomment.quesId,tblcomment.ansId,description,tbluser.userId,fullName,updatedTime,commentId");
       $this->db->from("tblcomment");
       $this->db->join("tbluser","tblcomment.userId=tbluser.userId","left");
-      $this->db->group_by("tblcomment.quesId");
+//      $this->db->group_by("tblcomment.quesId");
       $this->db->where("tblcomment.quesId",$qid);
       $q=$this->db->get();
       //$str_json_format = json_encode($q->result());
@@ -48,7 +64,7 @@ class Quesdetailmodel extends CI_Model {
     public function fetchcommentsforans($aid)
     {
       //echo $aid;
-      $this->db->select("tblcomment.quesId,tblcomment.ansId,description,tbluser.userId,fullName,updatedTime");
+      $this->db->select("tblcomment.quesId,tblcomment.ansId,description,tbluser.userId,fullName,updatedTime,commentId");
       $this->db->from("tblcomment");
       $this->db->join("tbluser","tblcomment.userId=tbluser.userId","left");
       $this->db->group_by("tblcomment.ansId");

@@ -4,7 +4,7 @@
 	margin-top: 10px;
 	padding: 10px;
 
-	box-shadow: none;	
+	box-shadow: none;
 }
 
 .qtitle{
@@ -22,7 +22,7 @@ margin-bottom: 10px;
 }
 
 .qstatus{
-	border-bottom:1px solid grey; 
+	border-bottom:1px solid grey;
 	padding: 10px;
 }
 
@@ -44,8 +44,7 @@ margin-bottom: 10px;
 .vote{
 	width: 10%;
 	padding-top: 15px;
-	border-right: 1px solid gray;
-	height: 100%;
+	border-right: 1px solid grey;
 }
 
 .vote-icon{
@@ -53,12 +52,13 @@ margin-bottom: 10px;
 	padding-top: 5px;
 	font-size: 3rem;
 	color:gray;
+	cursor: pointer;	
 }
 
 .Qbody{
 	display: -webkit-box;
 	width: 100%;
-	margin-bottom: 3rem;
+	margin-bottom: 2rem;
 }
 
 .description{
@@ -67,11 +67,13 @@ margin-bottom: 10px;
 	font-family: arial,sans-serif;
 	font-size: 15px;
 	width: 85%;
+	padding-bottom: 2rem;
 }
 
 .cmtBtn{
 	color: grey!important;
-	float: inline-end;
+
+
 }
 
 .ansHeading{
@@ -79,6 +81,7 @@ margin-bottom: 10px;
 	font-size: 22px;
 	font-family: arial;
 	margin: -10px 29px 29px;
+	margin-top: 25px;
 }
 
 .border{
@@ -101,4 +104,33 @@ margin-bottom: 10px;
 	border: 1px solid grey;
 	width: 95% !important;
 	box-shadow: none !important;
+}
+
+.flag{
+	position: absolute;
+    top: 5rem;
+    right: 20.5rem;
+    color: black;
+}
+
+.comment-section{
+	width: 80%;
+	margin-left: 11rem;
+	display:block;
+	padding: inherit;
+}
+
+.comments{
+display: inline-block;
+padding-left: 8rem;
+line-height: 2;
+}
+.user{
+	display: inline-block;
+	position: absolute;
+}
+.delpos{
+	float: right;
+	display: inline-block;
+	cursor: pointer;
 }

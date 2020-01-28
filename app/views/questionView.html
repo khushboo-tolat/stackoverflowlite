@@ -1,9 +1,8 @@
 <div class="mdc-card qcard" ng-controller="quesdetailCtrl">
   	<div class="qtitle">
-		  <b>{{ content[0][0]["title"] }}</b>
-		  <span ng-click="reportQues(content[0][0]['quesId'],'29')" ng-style="report"><i class="material-icons flag-icon" style="float: inline-end;">flag</i></span>
+      <span ng-click="reportQues(content[0][0]['quesId'],'29')" ng-style="report"><i class="material-icons flag-icon flag" style="float: inline-end;">flag</i></span>
+  		<b>{{ content[0][0]["title"] }}</b>
   	</div>
-    <!-- Report left -->
   	<div class="qstatus">
 
   		<span class="statusbox"><span class="minTitle">Asked</span> {{ content[0][0]["updatedTime"] | timeago }}</span>
@@ -17,26 +16,36 @@
   	<div class="Qbody">
   		<div class="vote">
   			<center>
-  			<i class="material-icons vote-icon">thumb_up_alt</i>
+  			<i class="material-icons vote-icon" ng-click="vote('1',content[0][0]['quesId'])">thumb_up_alt</i>
   			<span style="font-size: 20px;">{{ content[0][0]["v"] }}</span>
-  			<i class="material-icons vote-icon">thumb_down_alt</i>
+  			<i class="material-icons vote-icon" ng-click="vote('-1',content[0][0]['quesId'])">thumb_down_alt</i>
   			</center>
   		</div>
-  		<div class="description">
-			  <p>{{ content[0][0]["question"] }}</p>
-			  </div>
-        <!-- Updated Time and User details -->
+  		<div class="description"><div c></div>
+  			<p>{{ content[0][0]["question"] }}</p>
+        <!-- User details -->
         <!-- Comment's user details for ques and time -->
-        <div class="display-section" ng-repeat="com in content[2]">{{ com['description'] }}</div>
+        <!-- <div class="display-section" ng-repeat="com in content[2]">{{ com['description'] }}</div> -->
         <button class="mdc-button cmtBtn" ng-click="show()">comment</button>
   		</div>
+
   	</div>
   	<div class="ansbox " style="margin-left: 7rem !important" ng-show="Qcmt">
-  		<textarea  ng-model="bodies" class="textbox cmt"
+  		<textarea id="comm" ng-model="bodies" class="textbox cmt"
 				  data-post-type-id="1" cols="92" rows="3" placeholder="Write Your Comment Here ...!"></textarea>
-		<button class="mdc-button--outlined cmtpostbtn ansbtn">Upload </button>
+		<button class="mdc-button--outlined cmtpostbtn ansbtn" ng-click="insertComm(content[0][0]['quesId'])">Upload </button>
 	</div>
-  	<div class="ansHeading">3 Answers</div>
+  <div class="comment-section border" ng-repeat="com in content[2]">
+      <div class="user">{{com['userId']}}</div>
+      <div class=" comments"  >{{ com['description'] }} <span  style="display: block;"><span class="minTitle">Asked</span> {{ com["updatedTime"] | timeago }}</span></div>
+      <div class="delpos">
+        <i class="material-icons delete-icon " ng-click="deleteComm(com['commentId'])">delete</i>
+
+      </div>
+      </div>
+
+
+  	<div class="ansHeading">Answers</div>
     <!-- No. of ans -->
   	<div class="Qbody " ng-repeat="a in content[1]">
       		<!-- Report answer -->
@@ -51,11 +60,17 @@
   			<p>{{ a["answer"] }}
   			</p>
         <!-- Updated Time and user name -->
-  			<button class="mdc-button cmtBtn">comment</button>
+  			<button class="mdc-button cmtBtn" ng-click="showCommAnsbox()">comment</button>
         <!-- Report ans -->
         <!-- Comments for ans -->
   		</div>
+
   	</div>
+          <div class="ansbox " style="margin-left: 7rem !important" ng-show="Acmt">
+      <textarea id="anscomm" ng-model="bodies" class="textbox cmt"
+          data-post-type-id="1" cols="92" rows="3" placeholder="Write Your Comment Here ...!"></textarea>
+      <button class="mdc-button--outlined cmtpostbtn ansbtn" ng-click="insertCommAns(a['ansId'])">Upload </button>
+  </div>
 <!--   	<div class="Qbody border">
   		<div class="vote">
   			<center>
