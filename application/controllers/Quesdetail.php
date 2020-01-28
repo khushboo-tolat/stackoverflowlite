@@ -24,6 +24,17 @@ class Quesdetail extends CI_Controller{
                ];
       $this->a->deleteComm($comment);
   }
+
+    public function insertCommAns()
+  {
+      $r=json_decode(file_get_contents("php://input"),true);
+      $comment = [
+                    'userId' => $r['userId'],
+                    'ansId' => $r['ansid'],
+                    'description' => $r["comm"]
+               ];
+      $this->a->insertComm($comment);
+  }
       public function vote()
   {
       $r=json_decode(file_get_contents("php://input"),true);

@@ -74,7 +74,14 @@ routeApp.directive('sidebar',function(){
 routeApp.controller("quesdetailCtrl",['$scope','$http','$stateParams',function($scope,$http,$stateParams){
    window.datascope = $scope;
    $scope.Qcmt=false;
-
+   $scope.Acmt=false;
+   $scope.showCommAnsbox=function(){
+    if($scope.Acmt)
+      $scope.Acmt=false;
+    else
+      $scope.Acmt=true;
+    console.log($scope.Acmt);
+  };
   $scope.show=function(){
   
     if($scope.Qcmt)
@@ -110,6 +117,17 @@ routeApp.controller("quesdetailCtrl",['$scope','$http','$stateParams',function($
      console.log("Success");
    })
   };
+    $scope.insertCommAns=function(param) {
+    $txt=document.getElementById("anscomm").value;
+    $scope.Acmt=false;
+    document.getElementById("anscomm").value="";
+     $http({
+     method:'post',
+     url:'/stackoverflowlite/index.php/Quesdetail/insertCommAns',
+     data: {comm: $txt, userId: "26", ansid: param}
+   })    
+  };
+
 
    $http({
      method:'post',

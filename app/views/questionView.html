@@ -50,10 +50,17 @@
   			<p>{{ a["answer"] }}
   			</p>
         <!-- Updated Time and user name -->
-  			<button class="mdc-button cmtBtn">comment</button>
+  			<button class="mdc-button cmtBtn" ng-click="showCommAnsbox()">comment</button>
         <!-- Report ans -->
         <!-- Comments for ans -->
+              <div class="ansbox " style="margin-left: 7rem !important" ng-show="Acmt">
+      <textarea id="anscomm" ng-model="bodies" class="textbox cmt"
+          data-post-type-id="1" cols="92" rows="3" placeholder="Write Your Comment Here ...!"></textarea>
+      <button class="mdc-button--outlined cmtpostbtn ansbtn" ng-click="insertCommAns(a['ansId'])">Upload </button>
+  </div>
+
   		</div>
+
   	</div>
 <!--   	<div class="Qbody border">
   		<div class="vote">
