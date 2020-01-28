@@ -44,8 +44,7 @@ margin-bottom: 10px;
 .vote{
 	width: 10%;
 	padding-top: 15px;
-	border-right: 1px solid gray;
-	height: 100%;
+	border-right: 1px solid grey;
 }
 
 .vote-icon{
@@ -71,7 +70,8 @@ margin-bottom: 10px;
 
 .cmtBtn{
 	color: grey!important;
-	float: inline-end;
+	
+
 }
 
 .ansHeading{
