@@ -46,6 +46,7 @@ class Quesview extends CI_Controller{
       $d2=$this->a->fetchtags($k->qId);
       if(count($d2)>0){$k->Tagname=$d2["0"]->t;}else {$k->Tagname=[];}
       }
+    $data = json_decode(json_encode($data), True);
     $vt  = array_column($data, 'v');
     array_multisort($vt, SORT_DESC, $data);
     //$data=array_reverse($data);
