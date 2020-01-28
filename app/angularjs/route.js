@@ -15,7 +15,15 @@ $qProvider.errorOnUnhandledRejections(false);
 
 routeApp.config(["$stateProvider", "$urlRouterProvider", function($stateProvider, $urlRouterProvider) {
      $urlRouterProvider.otherwise("QuesList");
-
+     function sessionResolve(sessionService) {
+      var logedIn = false;
+      sessionService.kaibirandom(function(response) {
+          logedIn = response;
+          if(!logedIn) {
+            window.location.replace('http://localhost/stackoverflowlite/app/views/Authorization/');
+          }
+      })
+    }
      $stateProvider
      .state("QuesList", {
           url: "/QuesList",
@@ -31,17 +39,13 @@ routeApp.config(["$stateProvider", "$urlRouterProvider", function($stateProvider
           url: "/postQ",
           templateUrl: "http://localhost/stackoverflowlite/app/views/postquestion.html",
           controller: "postquesCtrl",
-          resolve: {
-            
-          }
+          resolve: {sessionResolve:sessionResolve}
      })
      .state("Profile", {
           url: "/Profile/:uId",
           templateUrl: "http://localhost/stackoverflowlite/app/views/profile.html",
           controller: "profileCtrl",
-          resolve: {
-            
-          }
+          resolve: {sessionResolve:sessionResolve}
      })
      // .state("qlist"{
      //    url:"/qlist",
@@ -67,6 +71,8 @@ routeApp.config(["$stateProvider", "$urlRouterProvider", function($stateProvider
      templateUrl : 'http://localhost/stackoverflowlite/app/views/tpage.html',
     controller:'tagCtrl'
    });
+
+  
 }]);
 
 

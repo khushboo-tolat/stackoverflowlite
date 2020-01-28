@@ -19,7 +19,7 @@ profile.controller('headerCtrl',function($scope,$http,$state){
 
 profile.controller('profileCtrl', ['$scope', '$http','$stateParams', 'sessionService', function ($scope, $http,$stateParams, sessionService) {
      $scope.logedIn = false;
-     sessionService.then(function(response) {
+     sessionService.kaibirandom(function(response) {
         $scope.logedIn = response;  
      /*var profile= document.getElementById("profile");
        var upload=document.getElementById("imageupload") ;
@@ -29,7 +29,6 @@ profile.controller('profileCtrl', ['$scope', '$http','$stateParams', 'sessionSer
        $scope.form=[];
        $scope.files=[];
      */
-    console.log($scope.logedIn);
      if($scope.logedIn){
           $scope.uploadedFile=function(element){
                $scope.currentFile = element.files[0];
