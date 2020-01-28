@@ -26,10 +26,11 @@
   			<p>{{ content[0][0]["question"] }}</p>
         <!-- Updated Time and User details -->
         <!-- Comment's user details for ques and time -->
-        <div class="display-section" ng-repeat="com in content[2]">{{ com['description'] }}</div>
         <button class="mdc-button cmtBtn" ng-click="show()">comment</button>
   		</div>
+
   	</div>
+    <div class="display-section" ng-repeat="com in content[2]">{{ com['description'] }}</div>
   	<div class="ansbox " style="margin-left: 7rem !important" ng-show="Qcmt">
   		<textarea  ng-model="bodies" class="textbox cmt"
 				  data-post-type-id="1" cols="92" rows="3" placeholder="Write Your Comment Here ...!"></textarea>
