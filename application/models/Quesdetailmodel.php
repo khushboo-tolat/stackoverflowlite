@@ -7,6 +7,22 @@ class Quesdetailmodel extends CI_Model {
         //call model constructor
         parent::__construct();
     }
+    public function insertComm($comment)
+    {
+      # code...
+      $this->db->insert('tblcomment', $comment);
+    }
+    public function deleteComm($comment)
+    {
+      # code...
+      $this->db->where($comment)
+                         ->delete('tblcomment');
+    }
+    public function insertvote($voting)
+    {
+      # code...
+      $this->db->insert('tblvoting', $voting);
+    }
     public function fetchdetails($qid){
       $this->db->select("tblquestion.quesId,title,question,tblquestion.userId,fullName,views,tblquestion.updatedTime,COUNT(vote) as v");
       $this->db->from("tblquestion");

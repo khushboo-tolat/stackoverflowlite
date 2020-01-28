@@ -76,11 +76,40 @@ routeApp.controller("quesdetailCtrl",['$scope','$http','$stateParams',function($
    $scope.Qcmt=false;
 
   $scope.show=function(){
+  
     if($scope.Qcmt)
       $scope.Qcmt=false;
     else
       $scope.Qcmt=true;
-  }
+  };
+  $scope.insertComm=function(param) {
+    $txt=document.getElementById("comm").value;
+    $scope.Qcmt=false;
+    document.getElementById("comm").value="";
+     $http({
+     method:'post',
+     url:'/stackoverflowlite/index.php/Quesdetail/insertComm',
+     data: {comm: $txt, userId: "26", qid: param}
+   })    
+  };
+  $scope.deleteComm=function(param) {
+     $http({
+     method:'post',
+     url:'/stackoverflowlite/index.php/Quesdetail/deleteComm',
+     data: {commentId: param}
+   })    
+  };
+  $scope.vote=function(param,qid) {
+    console.log("In vote");
+    $http({
+     method:'post',
+     url:'/stackoverflowlite/index.php/Quesdetail/vote',
+     data: {quesId: qid, votestatus:param, userId: "26"}
+   }).then(function () {
+     // body...
+     console.log("Success");
+   })
+  };
 
    $http({
      method:'post',

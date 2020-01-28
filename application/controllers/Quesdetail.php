@@ -6,6 +6,36 @@ class Quesdetail extends CI_Controller{
     $this->load->database();
     $this->load->model("Quesdetailmodel", "a");
   }
+  public function insertComm()
+  {
+      $r=json_decode(file_get_contents("php://input"),true);
+      $comment = [
+                    'userId' => $r['userId'],
+                    'quesId' => $r['qid'],
+                    'description' => $r["comm"]
+               ];
+      $this->a->insertComm($comment);
+  }
+    public function deleteComm()
+  {
+      $r=json_decode(file_get_contents("php://input"),true);
+      $comment = [
+                    'commentId' => $r['commentId']
+               ];
+      $this->a->deleteComm($comment);
+  }
+      public function vote()
+  {
+      $r=json_decode(file_get_contents("php://input"),true);
+      $voting = [
+                    'quesId' => $r['quesId'],
+                    'userId' => $r['userId'],
+                    'vote' => $r['votestatus']
+               ];
+      $this->a->insertvote($voting);
+  }
+
+
   public function index(){
     $r=json_decode(file_get_contents("php://input"),true);
     //var_dump($r);
