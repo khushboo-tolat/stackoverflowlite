@@ -51,7 +51,7 @@ class Quesdetailmodel extends CI_Model {
     }
     public function fetchcommentsforques($qid){
       //echo $qid;
-      $this->db->select("tblcomment.quesId,tblcomment.ansId,description,tbluser.userId,fullName,updatedTime");
+      $this->db->select("tblcomment.quesId,tblcomment.ansId,description,tbluser.userId,fullName,updatedTime,commentId");
       $this->db->from("tblcomment");
       $this->db->join("tbluser","tblcomment.userId=tbluser.userId","left");
 //      $this->db->group_by("tblcomment.quesId");
@@ -64,7 +64,7 @@ class Quesdetailmodel extends CI_Model {
     public function fetchcommentsforans($aid)
     {
       //echo $aid;
-      $this->db->select("tblcomment.quesId,tblcomment.ansId,description,tbluser.userId,fullName,updatedTime");
+      $this->db->select("tblcomment.quesId,tblcomment.ansId,description,tbluser.userId,fullName,updatedTime,commentId");
       $this->db->from("tblcomment");
       $this->db->join("tbluser","tblcomment.userId=tbluser.userId","left");
       $this->db->group_by("tblcomment.ansId");
