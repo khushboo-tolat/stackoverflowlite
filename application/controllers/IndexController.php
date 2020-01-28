@@ -32,10 +32,10 @@
     function checkSession() {
         //$this->session->set_userdata('userid', 1);
         if($this->session->userdata('userid')) {
-            echo "true";
+            echo true;
         }
         else{
-            echo "false";
+            echo false;
         }
     }
     
@@ -86,25 +86,26 @@
             $this->regModel->reg_form($user);
     }
 
-     public function insert(){
-        
-        $request=json_decode(file_get_contents('php://input'),true);
-          $title = $request["Title"];
-          $body = $request["Body"];
-          $tags = $request["Tags"];
-         /* if(empty($title) || empty($body))
-          {
-               echo json_encode(array('success'=>'0'));
-               exit();
-          }*/
-        $data=[
-                "title"=>$title,
-                "body"=>$body,
-                "tag"=>$tags
-        ];
-        var_dump($data);
-        if(!empty($data))
-            $this->PostQue_m->insert_data($data);
+    public function insert(){
+        if($this->session->userdata('userid')) {            
+            $request=json_decode(file_get_contents('php://input'),true);
+            $title = $request["Title"];
+            $body = $request["Body"];
+            $tags = $request["Tags"];
+            /* if(empty($title) || empty($body))
+            {
+                echo json_encode(array('success'=>'0'));
+                exit();
+            }*/
+            $data=[
+                    "title"=>$title,
+                    "body"=>$body,
+                    "tag"=>$tags
+            ];
+            var_dump($data);
+            if(!empty($data))
+                $this->PostQue_m->insert_data($data);
+        }
     }
 }
 ?>

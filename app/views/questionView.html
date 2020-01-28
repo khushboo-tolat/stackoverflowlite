@@ -1,7 +1,7 @@
 <div class="mdc-card qcard" ng-controller="quesdetailCtrl">
   	<div class="qtitle">
-      <span ng-click="reportQues(content[0][0]['quesId'],'29')" ng-style="report"><i class="material-icons flag-icon" style="float: inline-end;">flag</i></span>
-  		<b>{{ content[0][0]["title"] }}</b>
+		  <b>{{ content[0][0]["title"] }}</b>
+		  <span ng-click="reportQues(content[0][0]['quesId'],'29')" ng-style="report"><i class="material-icons flag-icon" style="float: inline-end;">flag</i></span>
   	</div>
     <!-- Report left -->
   	<div class="qstatus">
@@ -22,8 +22,9 @@
   			<i class="material-icons vote-icon">thumb_down_alt</i>
   			</center>
   		</div>
-  		<div class="description"><div c></div>
-  			<p>{{ content[0][0]["question"] }}</p>
+  		<div class="description">
+			  <p>{{ content[0][0]["question"] }}</p>
+			  </div>
         <!-- Updated Time and User details -->
         <!-- Comment's user details for ques and time -->
         <div class="display-section" ng-repeat="com in content[2]">{{ com['description'] }}</div>

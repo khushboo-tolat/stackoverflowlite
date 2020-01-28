@@ -1,4 +1,4 @@
-var routeApp = angular.module("routeApp", ['ui.router']);
+var routeApp = angular.module("routeApp", ['ui.router', 'sessionModule']);
 
 /*routeApp.run(function($rootScope){
      $rootScope.islogin = false;
@@ -13,7 +13,7 @@ $qProvider.errorOnUnhandledRejections(false);
  // $qProvider.errorOnUnhandledRejections(false);
  // }]);
 
-routeApp.config(function($stateProvider, $urlRouterProvider) {
+routeApp.config(["$stateProvider", "$urlRouterProvider", function($stateProvider, $urlRouterProvider) {
      $urlRouterProvider.otherwise("QuesList");
 
      $stateProvider
@@ -30,12 +30,18 @@ routeApp.config(function($stateProvider, $urlRouterProvider) {
      .state("postQ", {
           url: "/postQ",
           templateUrl: "http://localhost/stackoverflowlite/app/views/postquestion.html",
-          controller: "postquesCtrl"
+          controller: "postquesCtrl",
+          resolve: {
+            
+          }
      })
      .state("Profile", {
           url: "/Profile/:uId",
           templateUrl: "http://localhost/stackoverflowlite/app/views/profile.html",
-          controller: "profileCtrl"
+          controller: "profileCtrl",
+          resolve: {
+            
+          }
      })
      // .state("qlist"{
      //    url:"/qlist",
@@ -61,7 +67,7 @@ routeApp.config(function($stateProvider, $urlRouterProvider) {
      templateUrl : 'http://localhost/stackoverflowlite/app/views/tpage.html',
     controller:'tagCtrl'
    });
-});
+}]);
 
 
 routeApp.directive('sidebar',function(){

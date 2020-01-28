@@ -4,6 +4,11 @@
 	class Report extends CI_Controller {
           function __construct() {
                parent::__construct();
+               
+               if(!$this->session->userdata('userid')) {
+                    die();
+               }
+
                $this->load->model("Report_m");
           }
 
@@ -12,7 +17,7 @@
 
                $report = [
                     'userId' => $request['userId'],
-                    'reportedId' => 29
+                    'reportedId' => $this->session->userdata('userid')
                ];
 
                $response = $this->Report_m->check_report_details($report);
@@ -24,7 +29,7 @@
 
                $report=[
                     "userId" => $request["userId"],
-                    "reportedId" => 29
+                    "reportedId" => $this->session->userdata('userid')
                ];
 
                $this->Report_m->insert_report_details($report);
@@ -35,7 +40,7 @@
 
                $report=[
                     "userId" => $request["userId"],
-                    "reportedId" => 29
+                    "reportedId" => $this->session->userdata('userid')
                ];
 
                $this->Report_m->delete_report_details($report);
@@ -45,7 +50,7 @@
           {
                $r= json_decode(file_get_contents("php://input"),TRUE);
                $report=[
-                    "reportedId" => $r["reportedId"],
+                    "reportedId" => $this->session->userdata('userid'),
                     "quesId"=> $r["quesId"]
                ];
                $this->Report_m->insert_report_details($report);
@@ -55,7 +60,7 @@
                $r= json_decode(file_get_contents("php://input"),TRUE);
 
                $report=[
-                    "reportedId" => $r["reportedId"],
+                    "reportedId" => $this->session->userdata('userid'),
                     "quesId"=> $r["quesId"]
                ];
                //var_dump($r);
@@ -67,7 +72,7 @@
                $r= json_decode(file_get_contents("php://input"),TRUE);
                //var_dump($r);
                $report=[
-                    "reportedId" => $r["reportedId"],
+                    "reportedId" => $this->session->userdata('userid'),
                     "quesId"=> $r["quesId"]
                ];
                echo $this->Report_m->check_report_details($report);
@@ -77,7 +82,7 @@
           {
                $r= json_decode(file_get_contents("php://input"),TRUE);
                $report=[
-                    "reportedId" => $r["reportedId"],
+                    "reportedId" => $this->session->userdata('userid'),
                     "ansId"=> $r["ansId"]
                ];
                $this->Report_m->insert_report_details($report);
@@ -85,7 +90,7 @@
           function delete_report_ans(){
                $r= json_decode(file_get_contents("php://input"),TRUE);
                $report=[
-                    "reportedId" => $r["reportedId"],
+                    "reportedId" => $this->session->userdata('userid'),
                     "ansId"=> $r["ansId"]
                ];
                $this->Report_m->delete_report_details($report);
@@ -94,7 +99,7 @@
           {
                $r= json_decode(file_get_contents("php://input"),TRUE);
                $report=[
-                    "reportedId" => $r["reportedId"],
+                    "reportedId" => $this->session->userdata('userid'),
                     "ansId"=> $r["ansId"]
                ];
                echo $this->Report_m->check_report_details($report);
