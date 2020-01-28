@@ -38,7 +38,7 @@ class Quesdetailmodel extends CI_Model {
       $this->db->select("tblcomment.quesId,tblcomment.ansId,description,tbluser.userId,fullName,updatedTime");
       $this->db->from("tblcomment");
       $this->db->join("tbluser","tblcomment.userId=tbluser.userId","left");
-      $this->db->group_by("tblcomment.quesId");
+//      $this->db->group_by("tblcomment.quesId");
       $this->db->where("tblcomment.quesId",$qid);
       $q=$this->db->get();
       //$str_json_format = json_encode($q->result());
