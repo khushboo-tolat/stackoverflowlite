@@ -83,7 +83,7 @@ routeApp.controller("quesdetailCtrl",['$scope','$http','$stateParams',function($
     console.log($scope.Acmt);
   };
   $scope.show=function(){
-  
+
     if($scope.Qcmt)
       $scope.Qcmt=false;
     else
@@ -97,14 +97,14 @@ routeApp.controller("quesdetailCtrl",['$scope','$http','$stateParams',function($
      method:'post',
      url:'/stackoverflowlite/index.php/Quesdetail/insertComm',
      data: {comm: $txt, userId: "26", qid: param}
-   })    
+   })
   };
   $scope.deleteComm=function(param) {
      $http({
      method:'post',
      url:'/stackoverflowlite/index.php/Quesdetail/deleteComm',
      data: {commentId: param}
-   })    
+   })
   };
   $scope.vote=function(param,qid) {
     console.log("In vote");
@@ -125,7 +125,7 @@ routeApp.controller("quesdetailCtrl",['$scope','$http','$stateParams',function($
      method:'post',
      url:'/stackoverflowlite/index.php/Quesdetail/insertCommAns',
      data: {comm: $txt, userId: "26", ansid: param}
-   })    
+   })
   };
 
 
@@ -140,7 +140,6 @@ routeApp.controller("quesdetailCtrl",['$scope','$http','$stateParams',function($
      $scope.checkreportedQues($stateParams.qid,'29');
      var_dump(response.data[1]);
    });
-
 
    $scope.checkreportedQues=function(param,reporterId){
      $http({
@@ -247,4 +246,3 @@ routeApp.controller("quesdetailCtrl",['$scope','$http','$stateParams',function($
      }
    };
  }]);
-

@@ -52,7 +52,7 @@ margin-bottom: 10px;
 	padding-top: 5px;
 	font-size: 3rem;
 	color:gray;
-	cursor: pointer;	
+	cursor: pointer;
 }
 
 .Qbody{
@@ -134,3 +134,4 @@ line-height: 2;
 	display: inline-block;
 	cursor: pointer;
 }
+.anscomment{}

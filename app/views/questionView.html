@@ -23,9 +23,6 @@
   		</div>
   		<div class="description"><div c></div>
   			<p>{{ content[0][0]["question"] }}</p>
-        <!-- User details -->
-        <!-- Comment's user details for ques and time -->
-        <!-- <div class="display-section" ng-repeat="com in content[2]">{{ com['description'] }}</div> -->
         <button class="mdc-button cmtBtn" ng-click="show()">comment</button>
   		</div>
 
@@ -47,6 +44,7 @@
 
   	<div class="ansHeading">Answers</div>
     <!-- No. of ans -->
+
   	<div class="Qbody " ng-repeat="a in content[1]">
       		<!-- Report answer -->
   		<div class="vote">
@@ -57,21 +55,22 @@
   			</center>
   		</div>
   		<div class="description"><div c></div>
-  			<p>{{ a["answer"] }}
-  			</p>
-        <!-- Updated Time and user name -->
-  			<button class="mdc-button cmtBtn" ng-click="showCommAnsbox()">comment</button>
-        <!-- Report ans -->
-        <!-- Comments for ans -->
-              <div class="ansbox " style="margin-left: 7rem !important" ng-show="Acmt">
-      <textarea id="anscomm" ng-model="bodies" class="textbox cmt"
-          data-post-type-id="1" cols="92" rows="3" placeholder="Write Your Comment Here ...!"></textarea>
-      <button class="mdc-button--outlined cmtpostbtn ansbtn" ng-click="insertCommAns(a['ansId'])">Upload </button>
-  </div>
+  			<p>{{ a["answer"] }}<p>
+        <button class="mdc-button cmtBtn" ng-click="showCommAnsbox()">comment</button>
 
-  		</div>
+        </div>
+      <div class="" ng-repeat="m in content[3][a['ansId']]">
 
-  	</div>
+      <!-- <div class="comment-section border" ng-repeat="m in com"> -->
+          <div class="user">{{m['userId']}}</div>
+          <div class="anscomments"  >{{ m['description'] }} <span  style="display: block;"><span class="minTitle">Asked</span> {{ m["updatedTime"] | timeago }}</span></div>
+          <div class="delpos">
+            <i class="material-icons delete-icon ">delete</i>
+          </div>
+      </div>
+  	<!-- </div> -->
+    </div>
+
 <!--   	<div class="Qbody border">
   		<div class="vote">
   			<center>
