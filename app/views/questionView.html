@@ -36,7 +36,7 @@
       <div class="user">{{com['userId']}}</div>
       <div class=" comments"  >{{ com['description'] }} <span  style="display: block;"><span class="minTitle">Asked</span> {{ com["updatedTime"] | timeago }}</span></div>
       <div class="delpos">
-        <i class="material-icons delete-icon ">delete</i>
+        <i class="material-icons delete-icon " ng-click="deleteComm(com['commentId'])">delete</i>
 
       </div>
       </div>
@@ -68,6 +68,11 @@
             <i class="material-icons delete-icon ">delete</i>
           </div>
       </div>
+      <div class="ansbox " style="margin-left: 7rem !important" ng-show="Acmt">
+  <textarea id="anscomm" ng-model="bodies" class="textbox cmt"
+      data-post-type-id="1" cols="92" rows="3" placeholder="Write Your Comment Here ...!"></textarea>
+  <button class="mdc-button--outlined cmtpostbtn ansbtn" ng-click="insertCommAns(a['ansId'])">Upload </button>
+</div>
   	<!-- </div> -->
     </div>
 
