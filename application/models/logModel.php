@@ -9,7 +9,7 @@ class logModel extends CI_Model{
 
 	public function getPassword($data){
 		$this->db->where("userName",$data["username"])->or_where("email",$data["username"]);
-		$res=$this->db->get('tblUser')->result_array();
+		$res=$this->db->get('tbluser')->result_array();
 
 		return $res;
 	}

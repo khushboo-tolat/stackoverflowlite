@@ -3,7 +3,12 @@
 
 	class Profile extends CI_Controller {
           function __construct() {
-               parent::__construct();     
+               parent::__construct();   
+               
+               if(!$this->session->userdata('userid')) {
+                    die();
+               }
+
                $this->load->model("Profile_m");
                $this->load->library('form_validation');
           }
@@ -12,7 +17,7 @@
                $id = json_decode(file_get_contents('php://input'), TRUE);
 
                if($id['userId']==''){
-                    $user = $this->Profile_m->get_user_details(29);
+                    $user = $this->Profile_m->get_user_details($this->session->userdata('userid'));
                }
                else{
                $user = $this->Profile_m->get_user_details($id['userId']);
